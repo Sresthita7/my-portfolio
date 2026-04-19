@@ -3,128 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sresthita's Magical Cottage Portfolio</title>
+    <title>Sresthita Mukherjee | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --warm-glow: rgba(255, 220, 100, 0.5);
+            --glass-pane: rgba(255, 255, 255, 0.15);
+        }
+
         body, html {
             margin: 0; padding: 0; height: 100%; width: 100%;
-            overflow: hidden; background: #05050f;
+            overflow: hidden; background: #05050a;
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* Animated Snowfall Background */
-        #snow {
+        /* Background Scenery with Animated Snow */
+        #scenery {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
-            background-image: radial-gradient(circle, white 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: snowfall 10s linear infinite;
+            z-index: -1;
+            background: linear-gradient(to bottom, #0a0a20 0%, #1a1a3a 100%);
         }
-        @keyframes snowfall { from { background-position: 0 0; } to { background-position: 100px 500px; } }
 
-        /* The Main House Container using the provided image */
-        .house-scene {
+        /* The Main House Illustration */
+        .cottage-container {
             position: relative;
-            width: 750px;
-            height: 650px;
-            background-image: url('https://raw.githubusercontent.com/sresthita7/my-portfolio/main/assets/house_b2d5c4.jpg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+            width: 850px;
+            height: 700px;
+            background: url('https://raw.githubusercontent.com/sresthita7/my-portfolio/main/assets/house_b2d5c4.jpg') center/contain no-repeat;
+            filter: drop-shadow(0 0 40px rgba(255,255,255,0.05));
         }
 
-        /* Interactive Glass Hotspots */
-        .window-spot {
+        /* Mid-Opening Interactive Windows */
+        .window-trigger {
             position: absolute;
             cursor: pointer;
-            z-index: 10;
+            z-index: 5;
+            transition: 0.4s;
         }
 
-        /* Mid-Opening Glass Panes Animation */
-        .pane-container {
+        /* Realistic Mid-Opening Shutter Animation */
+        .shutters {
             position: absolute; width: 100%; height: 100%;
-            display: flex; perspective: 1000px;
+            display: flex; perspective: 1200px;
+            pointer-events: none;
         }
 
-        .pane {
+        .shutter {
             width: 50%; height: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(2px);
-            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--glass-pane);
+            backdrop-filter: blur(3px);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            transition: 0.9s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Opening Animation and Inner Glow */
-        .opened .pane-left { transform: rotateY(-110deg); transform-origin: left; opacity: 0; }
-        .opened .pane-right { transform: rotateY(110deg); transform-origin: right; opacity: 0; }
-        .opened { background: radial-gradient(circle, rgba(255, 200, 50, 0.3) 0%, transparent 80%); }
+        /* Window Open State: Glow beriye asbe */
+        .is-open .shutter-l { transform: rotateY(-115deg); transform-origin: left; opacity: 0; }
+        .is-open .shutter-r { transform: rotateY(115deg); transform-origin: right; opacity: 0; }
+        .is-open { background: radial-gradient(circle, var(--warm-glow) 0%, transparent 85%); }
 
-        /* Absolute Positioning for Hotspots based on your Image b2d5c4 */
-        #edu-win { top: 30.5%; left: 37.3%; width: 7.2%; height: 10%; } /* Top Window */
-        #exp-win { top: 49.5%; left: 30.8%; width: 10.5%; height: 14%; } /* Left Window */
-        #tech-win { top: 50.8%; left: 58.2%; width: 10.5%; height: 13%; } /* Right Window */
-        #cert-door { top: 51%; left: 40.5%; width: 13.5%; height: 23%; border-radius: 50% 50% 0 0; } /* Main Door */
+        /* Accurate Positioning on Image b2d5c4 */
+        #win-edu { top: 31%; left: 37.5%; width: 7%; height: 10%; } 
+        #win-exp { top: 49.5%; left: 30.5%; width: 11%; height: 14%; } 
+        #win-skills { top: 51%; left: 58.5%; width: 11%; height: 13%; } 
+        #door-certs { top: 52%; left: 40.5%; width: 13%; height: 23%; border-radius: 50% 50% 0 0; }
 
-        /* Modal Styles */
+        /* Premium Modal Design */
         .modal-content {
-            background: rgba(10, 10, 25, 0.95);
-            backdrop-filter: blur(15px);
-            border: 2px solid gold; color: white;
-            border-radius: 25px; box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+            background: rgba(10, 10, 30, 0.92);
+            backdrop-filter: blur(20px);
+            border: 2px solid #ffd700;
+            border-radius: 30px;
+            color: #f0f0f0;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.15);
         }
-        .modal-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .modal-title i { color: gold; margin-right: 12px; }
-        .skill-badge {
-            display: inline-block; padding: 5px 12px; margin: 4px;
-            background: rgba(255, 215, 0, 0.1); border: 1px solid gold;
-            border-radius: 15px; font-size: 0.85rem;
+        .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .modal-title i { color: #ffd700; margin-right: 15px; }
+
+        .tag {
+            display: inline-block; padding: 6px 14px; margin: 5px;
+            background: rgba(255, 215, 0, 0.08); border: 1px solid rgba(255, 215, 0, 0.5);
+            border-radius: 20px; font-size: 0.85rem;
         }
+
     </style>
 </head>
 <body>
 
-    <div id="snow"></div>
+    <div id="scenery"></div>
 
-    <div class="house-scene">
-        <div id="edu-win" class="window-spot" onclick="openModal('eduModal', this)">
-            <div class="pane-container">
-                <div class="pane pane-left"></div>
-                <div class="pane pane-right"></div>
+    <div class="cottage-container">
+        <div id="win-edu" class="window-trigger" onclick="openWindow('eduModal', this)">
+            <div class="shutters">
+                <div class="shutter shutter-l"></div>
+                <div class="shutter shutter-r"></div>
             </div>
         </div>
 
-        <div id="exp-win" class="window-spot" onclick="openModal('expModal', this)">
-            <div class="pane-container">
-                <div class="pane pane-left"></div>
-                <div class="pane pane-right"></div>
+        <div id="win-exp" class="window-trigger" onclick="openWindow('expModal', this)">
+            <div class="shutters">
+                <div class="shutter shutter-l"></div>
+                <div class="shutter shutter-r"></div>
             </div>
         </div>
 
-        <div id="tech-win" class="window-spot" onclick="openModal('techModal', this)">
-            <div class="pane-container">
-                <div class="pane pane-left"></div>
-                <div class="pane pane-right"></div>
+        <div id="win-skills" class="window-trigger" onclick="openWindow('skillModal', this)">
+            <div class="shutters">
+                <div class="shutter shutter-l"></div>
+                <div class="shutter shutter-r"></div>
             </div>
         </div>
 
-        <div id="cert-door" class="window-spot" onclick="openModal('certModal', this)"></div>
+        <div id="door-certs" class="window-trigger" onclick="openWindow('certModal', this)"></div>
     </div>
 
     <div class="modal fade" id="eduModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-graduation-cap"></i> Education Detail [cite: 30]</h5>
+                    <h5 class="modal-title"><i class="fas fa-university"></i> Education</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <ul>
-                        <li><strong>MCA:</strong> SASTRA University, Tamilnadu [cite: 32]</li>
-                        <li><strong>BCA:</strong> West Bengal University of Technology [cite: 31]</li>
-                        <li><strong>PG Diploma (ML/AI):</strong> IIIT Bangalore [cite: 34]</li>
-                    </ul>
+                    <p><strong>MCA</strong> | SASTRA University [cite: 32]</p>
+                    <p><strong>BCA</strong> | West Bengal University of Technology [cite: 31]</p>
+                    <p><strong>PG Diploma (ML/AI)</strong> | IIIT Bangalore [cite: 34]</p>
                 </div>
             </div>
         </div>
@@ -134,36 +137,15 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-briefcase"></i> Experience [cite: 50]</h5>
+                    <h5 class="modal-title"><i class="fas fa-briefcase"></i> Experience</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Citi Bank | Assistant Vice President [cite: 51]</strong> (2023-Till date [cite: 51]):</p>
-                    <ul>
-                        <li>Managing 10 teams across USA and APAC regions for data security[cite: 70].</li>
-                        <li>Leading Hadoop architecture optimization and data migration[cite: 71, 59].</li>
-                    </ul>
+                    <h6><strong>Assistant Vice President | Citi Bank</strong> [cite: 51]</h6>
+                    <p>Managing ten teams across USA and APAC regions for data security[cite: 70]. Proficient in Hadoop architecture and Azure Cloud[cite: 60].</p>
                     <hr>
-                    <p><strong>PwC | Senior Associate [cite: 75]</strong> (2021-2023 [cite: 77]):</p>
-                    <ul>
-                        <li>Azure Data Factory and Databricks development for Bank of America[cite: 78, 80].</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="techModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-code"></i> Technical Arsenal [cite: 36]</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="skill-badge">Hadoop [cite: 37]</div><div class="skill-badge">Spark [cite: 37]</div>
-                    <div class="skill-badge">Azure [cite: 39]</div><div class="skill-badge">Databricks [cite: 42]</div>
-                    <div class="skill-badge">Python [cite: 46]</div><div class="skill-badge">Kubernetes [cite: 48]</div>
+                    <h6><strong>Senior Associate | PwC</strong> [cite: 75]</h6>
+                    <p>Azure Data Factory and Databricks development for Bank of America[cite: 78, 80].</p>
                 </div>
             </div>
         </div>
@@ -173,15 +155,30 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-certificate"></i> Certifications [cite: 127]</h5>
+                    <h5 class="modal-title"><i class="fas fa-certificate"></i> Certifications & Awards</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <ul>
-                        <li>Azure Solutions Architect Expert [cite: 134]</li>
-                        <li>AZ-900, AZ-204, DP-203, DP-300 [cite: 128, 129, 132, 133]</li>
-                        <li>Featured among 1 Million Women in STEM [cite: 158]</li>
-                    </ul>
+                    <p><strong>Azure Solution Architect Expert</strong> [cite: 8]</p>
+                    <p>Featured among <strong>1 Million Women in STEM</strong> [cite: 158]</p>
+                    <p>Received <strong>6x On the Spot Awards</strong> [cite: 151]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="skillModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-laptop-code"></i> Skills</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <span class="tag">Hadoop</span> <span class="tag">Spark</span>
+                    <span class="tag">Azure ADF</span> <span class="tag">Databricks</span>
+                    <span class="tag">Python</span> <span class="tag">Kubernetes</span>
+                    <span class="tag">SQL / PostgreSQL</span> [cite: 37, 39, 44, 46, 48]
                 </div>
             </div>
         </div>
@@ -189,12 +186,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function openModal(modalId, element) {
-            element.classList.add('opened');
+        function openWindow(modalId, element) {
+            element.classList.add('is-open');
             const myModal = new bootstrap.Modal(document.getElementById(modalId));
             myModal.show();
             document.getElementById(modalId).addEventListener('hidden.bs.modal', () => {
-                element.classList.remove('opened');
+                element.classList.remove('is-open');
             });
         }
     </script>
