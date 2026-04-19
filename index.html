@@ -3,286 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRESTHITA | Hyper-Galaxy Portfolio</title>
+    <title>Sresthita's Interactive Portfolio House</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --turq: #00f2ff;
-            --pink: #ff007f;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.15);
+            --sky: #0d0d2b;
+            --house-body: #2c3e50;
+            --roof: #c0392b;
+            --edu-color: #2ecc71; /* Green */
+            --cert-color: #3498db; /* Blue */
+            --exp-color: #f1c40f; /* Yellow */
+            --award-color: #e91e63; /* Pink */
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-
         body {
-            background: #02020a;
+            background: var(--sky);
             color: white;
             overflow-x: hidden;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Galaxy Background Layer */
-        #galaxy-canvas {
+        #stars {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #0d0d2b 0%, #02020a 100%);
+            background: radial-gradient(circle at 50% 50%, #1b2735 0%, #090a0f 100%);
         }
 
-        .nebula-glow {
-            position: fixed;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(255, 0, 127, 0.1) 0%, transparent 70%);
-            filter: blur(100px);
-            z-index: -1;
-            animation: move 20s infinite alternate;
-        }
-
-        @keyframes move { from { transform: translate(-10%, -10%); } to { transform: translate(20%, 20%); } }
-
-        .container {
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* Sidebar Profile */
-        .sidebar {
-            position: sticky;
-            top: 60px;
-            height: fit-content;
-            background: var(--glass);
-            backdrop-filter: blur(40px);
-            border: 1px solid var(--border);
-            border-radius: 40px;
-            padding: 50px 30px;
-            text-align: center;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-        }
-
-        .avatar-liquid {
-            width: 200px; height: 200px;
-            margin: 0 auto 30px;
-            background: linear-gradient(45deg, var(--turq), var(--pink));
-            padding: 4px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: liquid-morph 8s infinite ease-in-out;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
-        }
-
-        @keyframes liquid-morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-        }
-
-        .name-glitch {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(to right, #fff, var(--turq), var(--pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            border-radius: 18px;
-            margin-top: 15px;
-            color: #ddd;
-            text-decoration: none;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .contact-link:hover {
-            border-color: var(--turq);
-            background: rgba(0, 242, 255, 0.08);
-            transform: translateY(-3px);
-        }
-
-        /* Content Area */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px);
-            border: 1px solid var(--border);
-            border-radius: 35px;
-            padding: 40px;
-            margin-bottom: 30px;
+        /* The House Structure */
+        .house {
             position: relative;
-            overflow: hidden;
-            transition: 0.4s;
+            width: 500px;
+            height: 400px;
+            background: var(--house-body);
+            border: 4px solid #1a252f;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border-bottom: 10px solid #555;
         }
 
-        .glass-card:hover { border-color: var(--turq); transform: scale(1.01); }
-
-        .ripple-drop {
+        /* Roof */
+        .roof {
             position: absolute;
-            background: radial-gradient(circle, rgba(0, 242, 255, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: scale(0);
-            animation: ripple-fx 0.8s ease-out;
+            top: -150px;
+            left: -20px;
+            width: 540px;
+            height: 150px;
+            background: var(--roof);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-bottom: 5px solid rgba(0,0,0,0.2);
         }
 
-        @keyframes ripple-fx { to { transform: scale(4); opacity: 0; } }
-
-        h2 { font-size: 1.8rem; margin-bottom: 25px; color: var(--turq); display: flex; align-items: center; gap: 15px; }
-
-        .item-detail { border-left: 2px solid var(--pink); padding-left: 20px; margin-bottom: 30px; }
-        .item-detail h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
-        .item-detail span { color: var(--turq); font-size: 0.9rem; display: block; margin-bottom: 10px; }
-        .item-detail p { color: #bbb; line-height: 1.6; }
-
-        .skill-chip {
-            display: inline-block;
-            padding: 8px 18px;
-            background: rgba(0, 242, 255, 0.08);
-            border: 1px solid var(--turq);
-            border-radius: 50px;
-            margin: 5px;
-            font-size: 0.85rem;
-            color: #fff;
+        /* Name Plate on Roof */
+        .name-plate {
+            position: absolute;
+            top: 80px;
+            width: 100%;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 0 0 10px var(--turq);
         }
 
-        @media (max-width: 1000px) {
-            .container { grid-template-columns: 1fr; }
-            .sidebar { position: relative; top: 0; }
+        /* Windows & Door Grid */
+        .facade {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+            height: 100%;
         }
+
+        .window {
+            position: relative;
+            background: rgba(255,255,255,0.1);
+            border: 5px solid #bdc3c7;
+            cursor: pointer;
+            transition: 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Window Colors */
+        .win-edu { background: var(--edu-color); }
+        .win-cert { background: var(--cert-color); }
+        .win-exp { background: var(--exp-color); color: #333; }
+        .win-award { background: var(--award-color); }
+
+        /* Window Hover/Click Effect */
+        .window:hover {
+            transform: perspective(500px) rotateY(-30deg);
+            box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+        }
+
+        .window::before {
+            content: "CLICK TO OPEN";
+            position: absolute;
+            font-size: 0.6rem;
+            bottom: 5px;
+            opacity: 0.7;
+        }
+
+        /* Modal Customization (Glassmorphism inside House) */
+        .modal-content {
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--turq);
+            color: white;
+            border-radius: 20px;
+        }
+        
+        .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .modal-footer { border-top: 1px solid rgba(255,255,255,0.1); }
+
     </style>
 </head>
 <body>
 
-    <canvas id="galaxy-canvas"></canvas>
-    <div class="nebula-glow" style="top: 10%; left: 5%;"></div>
+    <div id="stars"></div>
 
-    <div class="container">
-        <aside class="sidebar">
-            <div class="avatar-liquid"></div>
-            <h1 class="name-glitch">SRESTHITA</h1>
-            <p style="color: var(--turq); letter-spacing: 5px; font-size: 0.8rem; margin-top: 5px;">ASSISTANT VICE PRESIDENT</p>
-            
-            <div style="margin-top: 35px; text-align: left;">
-                <a href="mailto:Sresthita7@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> Sresthita7@gmail.com
-                </a>
-                <div class="contact-link"><i class="fas fa-phone"></i> +1 (646)-387-7022</div>
-                <div class="contact-link"><i class="fas fa-map-marker-alt"></i> Denver, CO 80202</div>
-                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i> <strong>View LinkedIn Profile</strong>
-                </a>
+    <div class="house-container">
+        <div class="house">
+            <div class="roof">
+                <div class="name-plate">SRESTHITA MUKHERJEE</div>
             </div>
-        </aside>
+            
+            <div class="facade">
+                <div class="window win-edu" data-bs-toggle="modal" data-bs-target="#eduModal">
+                    <i class="fas fa-graduation-cap fa-2x"></i>
+                </div>
 
-        <main>
-            <section class="glass-card" onclick="ripple(event)">
-                <h2><i class="fas fa-id-card-alt"></i> Profile Summary</h2>
-                [span_7](start_span)<p>Assistant Vice President with 9 years of experience in IT and Banking.[span_7](end_span) [span_8](start_span)[span_9](start_span)Skilled in Hadoop, big data analytics, cluster management, and Azure Cloud.[span_8](end_span)[span_9](end_span) [span_10](start_span)[span_11](start_span)Achieved Azure Solutions Architect Expert status with 8 Microsoft Azure certifications.[span_10](end_span)[span_11](end_span)</p>
-            </section>
+                <div class="window win-cert" data-bs-toggle="modal" data-bs-target="#certModal">
+                    <i class="fas fa-certificate fa-2x"></i>
+                </div>
 
-            <section class="glass-card" onclick="ripple(event)">
-                <h2><i class="fas fa-briefcase"></i> Experience</h2>
-                <div class="item-detail">
-                    <h3>Citi Bank | Assistant Vice President</h3>
-                    <span>Feb 2023 - Present | New Jersey, USA</span>
-                    [span_12](start_span)[span_13](start_span)<p>Managing ten teams across USA and APAC regions for data security and archiving engineering projects.[span_12](end_span)[span_13](end_span) [span_14](start_span)Proficient in Hadoop, Solix, and Azure Cloud Architecture.[span_14](end_span) [span_15](start_span)Led efforts in Hadoop architecture optimization and implementing cloud patches.[span_15](end_span)</p>
+                <div class="window win-exp" data-bs-toggle="modal" data-bs-target="#expModal">
+                    <i class="fas fa-briefcase fa-2x"></i>
                 </div>
-                <div class="item-detail">
-                    <h3>PwC | Senior Associate</h3>
-                    <span>Sep 2021 - Feb 2023 | New York, USA</span>
-                    [span_16](start_span)[span_17](start_span)<p>Worked on Azure Data Factory pipelines and used Spark/Databricks to convert JSON data into delta tables.[span_16](end_span)[span_17](end_span) [span_18](start_span)Involved in requirement gathering and creating functional specifications.[span_18](end_span)</p>
-                </div>
-                <div class="item-detail">
-                    <h3>TCS | IT Analyst</h3>
-                    <span>Apr 2016 - Sep 2021 | Kolkata, India</span>
-                    [span_19](start_span)<p>Big Data development for TD Bank.[span_19](end_span) [span_20](start_span)Managed 7 clusters and automated delivery pipelines to reduce manual error.[span_20](end_span)</p>
-                </div>
-            </section>
 
-            <section class="glass-card" onclick="ripple(event)">
-                <h2><i class="fas fa-code"></i> Technical Arsenal</h2>
-                <div class="skill-chip">Hadoop, HDFS, Hive, Sqoop</div>
-                <div class="skill-chip">Azure, ADLS, Databricks</div>
-                <div class="skill-chip">Spark, PySpark, Python</div>
-                <div class="skill-chip">PostgreSQL, Citus, Oracle</div>
-                <div class="skill-chip">Jenkins, Kubernetes, Docker</div>
-            </section>
-
-            <section class="glass-card" onclick="ripple(event)">
-                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-                <div class="item-detail" style="border-color: var(--turq);">
-                    <h3>MCA | SASTRA University</h3>
-                    [span_21](start_span)<p>Master of Computer Application (Tamilnadu)[span_21](end_span)</p>
+                <div class="window win-award" data-bs-toggle="modal" data-bs-target="#awardModal">
+                    <i class="fas fa-trophy fa-2x"></i>
                 </div>
-                <div class="item-detail" style="border-color: var(--turq);">
-                    <h3>BCA | WBUT</h3>
-                    [span_22](start_span)<p>Bachelor of Computer Application (Kolkata)[span_22](end_span)</p>
-                </div>
-                <div class="item-detail" style="border-color: var(--turq);">
-                    <h3>PG Diploma | IIIT Bangalore</h3>
-                    [span_23](start_span)<p>Machine Learning & AI[span_23](end_span)</p>
-                </div>
-            </section>
-
-            <section class="glass-card" onclick="ripple(event)">
-                <h2><i class="fas fa-trophy"></i> Recognition</h2>
-                [span_24](start_span)<p>🏆 Featured among **1 Million Women in STEM**.[span_24](end_span)</p>
-                [span_25](start_span)<p>⭐ **Beyond Excellence Award** from Client.[span_25](end_span)</p>
-                [span_26](start_span)<p>⭐ **6x On the Spot Awards** for client appreciation.[span_26](end_span)</p>
-                [span_27](start_span)<p>⭐ **Star of the Month** for leading team success.[span_27](end_span)</p>
-            </section>
-        </main>
+            </div>
+        </div>
     </div>
 
-    <script>
-        const canvas = document.getElementById('galaxy-canvas');
-        const ctx = canvas.getContext('2d');
-        let stars = [];
+    <div class="modal fade" id="eduModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: var(--edu-color)">Education Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li><strong>MCA:</strong> SASTRA University, Tamilnadu [cite: 32, 33]</li>
+                        <li><strong>BCA:</strong> West Bengal University of Technology [cite: 31]</li>
+                        <li><strong>PG Diploma (ML/AI):</strong> IIIT Bangalore [cite: 34, 35]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            stars = [];
-            for(let i=0; i<300; i++) {
-                stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, sz: Math.random()*1.5, s: Math.random()*0.3 });
-            }
-        }
+    <div class="modal fade" id="certModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: var(--cert-color)">Certifications</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Total 8 Azure Certifications completed:</p>
+                    <ul>
+                        <li>Azure Solution Architect Expert [cite: 8, 134]</li>
+                        <li>AZ-900, AZ-204, AZ-303, DP-203 [cite: 128, 129, 130, 132]</li>
+                        <li>DP-300, DP-900 [cite: 131, 133]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function draw() {
-            ctx.clearRect(0,0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            stars.forEach(st => {
-                ctx.beginPath(); ctx.arc(st.x, st.y, st.sz, 0, Math.PI*2); ctx.fill();
-                st.y += st.s;
-                if(st.y > canvas.height) st.y = 0;
-            });
-            requestAnimationFrame(draw);
-        }
+    <div class="modal fade" id="expModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: var(--exp-color)">Professional Experience</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Citi Bank | AVP</strong> (2023 - Present):</p>
+                    <ul>
+                        <li>USA and APAC data security & archiving engineering[cite: 52].</li>
+                        <li>Managing ten teams across regions[cite: 70].</li>
+                    </ul>
+                    <hr>
+                    <p><strong>PwC | Senior Associate</strong> (2021 - 2023)[cite: 75, 77]:</p>
+                    <ul>
+                        <li>Azure Data Factory & Databricks developer[cite: 80, 91].</li>
+                    </ul>
+                    <hr>
+                    <p><strong>TCS | IT Analyst</strong> (2016 - 2021)[cite: 97, 98]:</p>
+                    <ul>
+                        <li>Big Data development for TD Bank[cite: 99, 101].</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function ripple(e) {
-            const card = e.currentTarget;
-            const drop = document.createElement("span");
-            const rect = card.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            drop.style.width = drop.style.height = `${size}px`;
-            drop.style.left = `${e.clientX - rect.left - size/2}px`;
-            drop.style.top = `${e.clientY - rect.top - size/2}px`;
-            drop.classList.add("ripple-drop");
-            const old = card.querySelector(".ripple-drop");
-            if(old) old.remove();
-            card.appendChild(drop);
-        }
+    <div class="modal fade" id="awardModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: var(--award-color)">Recognition & Awards</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>Featured among <strong>1 Million Women in STEM</strong>[cite: 158].</li>
+                        <li><strong>Beyond Excellence Award</strong> from Client[cite: 153].</li>
+                        <li><strong>6x On the Spot Awards</strong>[cite: 151].</li>
+                        <li><strong>Star of the Month</strong> (2 times)[cite: 154].</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        window.addEventListener('resize', init);
-        init(); draw();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
