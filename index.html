@@ -90,30 +90,87 @@
     .side h2{margin-top:0;font-size:30px}
     .side p,.side li{line-height:1.7;color:#334150}
 
+    .street{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:19%;
+      background:
+        linear-gradient(to bottom, #d8dee5 0%, #c5ced8 42%, #b3bcc7 100%);
+      z-index:0;
+    }
+
+    .driveway{
+      position:absolute;
+      left:50%;
+      bottom:0;
+      width:34%;
+      height:21%;
+      transform:translateX(-50%);
+      background:linear-gradient(to bottom, #cfd6dd 0%, #b8c1cb 100%);
+      clip-path:polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
+      box-shadow:inset 0 8px 12px rgba(255,255,255,.2);
+      z-index:1;
+    }
+
+    .street-line{
+      position:absolute;
+      left:50%;
+      width:12%;
+      height:1.2%;
+      transform:translateX(-50%);
+      background:rgba(255,255,255,.88);
+      border-radius:999px;
+      z-index:2;
+    }
+    .street-line.line1{bottom:7%}
+    .street-line.line2{bottom:3.5%; width:16%}
+
     .treeL,.treeR{
       position:absolute;
-      top:10%;
-      width:14%;
-      height:62%;
+      top:7%;
+      width:18%;
+      height:68%;
       border-radius:999px;
-      background:rgba(73,190,118,.16);
-      filter:blur(28px);
+      background:
+        radial-gradient(circle at 50% 28%, rgba(111, 207, 115, 0.95) 0%, rgba(67, 160, 71, 0.92) 42%, rgba(46, 125, 50, 0.82) 68%, rgba(27, 94, 32, 0.28) 100%);
+      filter:blur(6px);
+      opacity:1;
       pointer-events:none;
+      z-index:1;
     }
-    .treeL{left:-2%}
-    .treeR{right:-2%}
+    .treeL{left:-1%}
+    .treeR{right:-1%}
+
+    .treeL::after,
+    .treeR::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:4%;
+      width:16%;
+      height:28%;
+      transform:translateX(-50%);
+      border-radius:12px;
+      background:linear-gradient(to bottom,#8d6e63,#5d4037);
+      box-shadow:0 6px 12px rgba(0,0,0,.12);
+    }
 
     .bushL,.bushR{
       position:absolute;
-      bottom:11%;
-      height:4%;
+      bottom:10%;
+      height:6%;
       border-radius:999px;
-      background:rgba(73,190,118,.28);
-      filter:blur(10px);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(102, 187, 106, 0.98) 0%, rgba(67, 160, 71, 0.92) 60%, rgba(46, 125, 50, 0.72) 100%);
+      filter:blur(1px);
+      opacity:1;
       pointer-events:none;
+      z-index:2;
     }
-    .bushL{left:8%;width:14%}
-    .bushR{right:8%;width:18%}
+    .bushL{left:6%;width:18%}
+    .bushR{right:6%;width:22%}
 
     .villa{
       position:absolute;
@@ -122,6 +179,7 @@
       transform:translateX(-50%);
       width:80%;
       height:83%;
+      z-index:3;
     }
 
     .block-top{
@@ -239,6 +297,7 @@
       background:#fff;
       border-radius:18px;
       box-shadow:0 10px 20px rgba(0,0,0,.12);
+      z-index:4;
     }
     .car .roof{position:absolute;left:10%;right:10%;top:15%;height:38%;background:#64748b;border-radius:16px 16px 8px 8px}
     .car .win1,.car .win2{position:absolute;top:42%;height:22%;width:30%;background:rgba(51,65,85,.72);border-radius:6px}
@@ -370,10 +429,18 @@
   </style>
 </head>
 <body>
-
+  <div class="page">
+    <div class="hero">
+      <h1>Sresthita Mukherjee</h1>
+    </div>
 
     <div class="layout">
       <div class="scene">
+        <div class="street"></div>
+        <div class="driveway"></div>
+        <div class="street-line line1"></div>
+        <div class="street-line line2"></div>
+
         <div class="treeL"></div>
         <div class="treeR"></div>
         <div class="bushL"></div>
@@ -488,6 +555,7 @@
           <li>Blue: Projects</li>
           <li>Pink: Awards & Extras</li>
           <li>Purple: Extra Curricular</li>
+        </ul>
       </div>
     </div>
   </div>
