@@ -3,156 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sresthita | Futuristic Command Center</title>
+    <title>Sresthita's Magical Cottage Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --neon-blue: #00f2ff;
-            --neon-pink: #ff007f;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --edu-color: #2ecc71; /* Green Windows visual */
+            --cert-color: #3498db; /* Blue Windows visual */
+            --exp-color: #f1c40f; /* Yellow Windows visual */
+            --award-color: #e91e63; /* Pink Windows visual */
+            --glass-pane: rgba(255, 255, 255, 0.1);
+            --room-glow: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 80%);
         }
 
         body {
-            margin: 0; padding: 0;
-            background: #02020a;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-            height: 100vh;
+            margin: 0; padding: 0; overflow: hidden;
+            background: linear-gradient(180deg, #d4eafc 0%, #a3c9f1 70%, #d4eafc 100%);
+            min-height: 100vh;
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* Animated Nebula Background */
-        #bg-effect {
+        /* Animated Snowfall Background visual */
+        #snow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a3a 0%, #02020a 100%);
-            z-index: -1;
+            z-index: -3;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: snow-animation 10s linear infinite;
         }
 
-        /* Central Holographic Core */
-        .core-container {
+        @keyframes snow-animation { 0% { background-position: 0 0; } 100% { background-position: 50px 500px; } }
+
+        /* Immersive Mountain & River Scenery visual */
+        #scenery {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background-image: 
+                /* Mountains */
+                linear-gradient(135deg, #a9a9a9 0%, transparent 60%),
+                radial-gradient(circle at 60% 40%, #b0c4de 0%, transparent 40%),
+                /* River */
+                linear-gradient(to right, transparent 50%, #4682b4 70%, transparent 90%),
+                /* Street */
+                linear-gradient(to bottom, transparent 80%, #555 100%);
+            background-size: cover;
+            opacity: 0.8;
+        }
+
+        /* Magical House Visual visual look based on b33a9a */
+        .house {
             position: relative;
-            z-index: 10;
-            text-align: center;
+            width: 700px;
+            height: 600px;
+            background-image: url('https://raw.githubusercontent.com/sresthita7/my-portfolio/main/assets/house_b33a9a.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 40px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
+            overflow: hidden;
         }
 
-        .main-orb {
-            width: 150px; height: 150px;
-            background: radial-gradient(circle, var(--neon-blue), transparent);
-            border-radius: 50%;
-            box-shadow: 0 0 50px var(--neon-blue);
+        /* Mid-Opening Glass Windows grid */
+        .facade {
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 40px;
+            padding: 50px 40px; height: 100%;
+        }
+
+        /* Glass Pane visual look */
+        .window {
+            position: relative;
+            background: var(--glass-pane);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255,255,255,0.2);
             cursor: pointer;
-            animation: pulse 3s infinite alternate;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900; letter-spacing: 2px; font-size: 1.2rem;
+            transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            perspective: 1000px;
+            border-radius: 10px;
         }
 
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 0.8; }
-            to { transform: scale(1.1); opacity: 1; box-shadow: 0 0 80px var(--neon-blue); }
+        .window:hover { transform: translateY(-5px) scale(1.02); }
+
+        /* iPhone style Water Ripple on Window mid-opening visual */
+        .window:active::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.3) 0%, transparent 70%);
+            animation: ripple-drop 0.8s ease-out;
         }
 
-        /* Floating Glass Cards */
-        .glass-panel {
+        @keyframes ripple-drop { to { transform: scale(4); opacity: 0; } }
+
+        /* Window Specific Ghorer Alo Berobe Warm Glow */
+        .glow-room {
             position: absolute;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 25px;
-            width: 300px;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--room-glow);
             opacity: 0;
-            transform: scale(0.5);
-            pointer-events: none;
+            transition: 1s ease;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
         }
 
-        /* Floating Positions */
-        .edu-panel { top: -250px; left: -350px; }
-        .exp-panel { top: -250px; right: -350px; }
-        .skill-panel { bottom: -250px; left: -350px; }
-        .award-panel { bottom: -250px; right: -350px; }
+        .window:active .glow-room { opacity: 1; }
 
-        /* Active State */
-        .active .glass-panel {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: all;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        /* Technical CV details integration - Clean Text, No Gibberish visual */
+        .exp-detail { border-left: 2px solid var(--pink); padding-left: 20px; margin-bottom: 25px; }
+        .exp-detail h3 { font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
+        .exp-detail p { color: #bbb; line-height: 1.6; font-size: 0.95rem; }
+
+        /* Technical Skills Pills visual */
+        .skill-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-pill {
+            display: inline-block; padding: 6px 15px;
+            background: rgba(0, 242, 255, 0.1); border: 1px solid var(--turq);
+            border-radius: 20px; font-size: 0.8rem; color: #fff;
         }
 
-        h2 { color: var(--neon-blue); font-size: 1.2rem; border-bottom: 1px solid var(--neon-blue); padding-bottom: 10px; }
-        p, li { font-size: 0.85rem; color: #ccc; line-height: 1.4; }
-        ul { padding-left: 15px; }
-
-        /* Skill Badges */
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            background: rgba(0, 242, 255, 0.1);
-            border: 1px solid var(--neon-blue);
-            border-radius: 5px;
-            font-size: 0.7rem;
-            margin: 3px;
-        }
-
-        /* Social Icons */
-        .socials { margin-top: 20px; }
-        .socials a { color: white; font-size: 1.5rem; margin: 0 10px; transition: 0.3s; }
-        .socials a:hover { color: var(--neon-pink); }
     </style>
 </head>
 <body>
 
-    <div id="bg-effect"></div>
+    <div id="snow"></div>
+    <div id="scenery"></div>
 
-    <div class="core-container" id="mainCore">
-        <div class="main-orb" onclick="toggleInterface()">CORE</div>
-        <h1 style="margin-top: 20px; font-size: 2rem;">SRESTHITA</h1>
-        <p style="letter-spacing: 5px; color: var(--neon-blue);">ASSISTANT VICE PRESIDENT</p>
-        
-        <div class="socials">
-            <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:Sresthita7@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
+    <div class="house-container">
+        <div class="house">
+            <div class="facade">
+                <div class="window" style="--edu-color-glow: rgba(46, 204, 113, 0.2); background: var(--edu-color-glow);" data-bs-toggle="modal" data-bs-target="#eduModal">
+                    <div class="glow-room">
+                        <i class="fas fa-graduation-cap fa-2x"></i>
+                        <span>Education</span>
+                    </div>
+                </div>
 
-        <div class="glass-panel edu-panel">
-            <h2><i class="fas fa-graduation-cap"></i> EDUCATION</h2>
-            <p><strong>MCA:</strong> SASTRA University, Tamilnadu [cite: 32]</p>
-            <p><strong>BCA:</strong> West Bengal University of Tech [cite: 31]</p>
-            <p><strong>PG Diploma (ML/AI):</strong> IIIT Bangalore [cite: 34]</p>
-        </div>
+                <div class="window" style="--cert-color-glow: rgba(52, 152, 219, 0.2); background: var(--cert-color-glow);" data-bs-toggle="modal" data-bs-target="#certModal">
+                    <div class="glow-room">
+                        <i class="fas fa-certificate fa-2x"></i>
+                        <span>Certifications</span>
+                    </div>
+                </div>
 
-        <div class="glass-panel exp-panel">
-            <h2><i class="fas fa-briefcase"></i> EXPERIENCE</h2>
-            <p><strong>Citi Bank:</strong> AVP, Data Security </p>
-            <p><strong>PwC:</strong> Senior Associate (Azure) [cite: 75]</p>
-            <p><strong>TCS:</strong> IT Analyst (Big Data) [cite: 97]</p>
-        </div>
+                <div class="window" style="--exp-color-glow: rgba(241, 196, 15, 0.2); background: var(--exp-color-glow);" data-bs-toggle="modal" data-bs-target="#expModal">
+                    <div class="glow-room">
+                        <i class="fas fa-briefcase fa-2x"></i>
+                        <span>Experience</span>
+                    </div>
+                </div>
 
-        <div class="glass-panel skill-panel">
-            <h2><i class="fas fa-microchip"></i> TECH STACK</h2>
-            <div class="badge">Hadoop</div> <div class="badge">Spark</div>
-            <div class="badge">Azure Cloud</div> <div class="badge">ADF</div>
-            <div class="badge">Databricks</div> <div class="badge">Python</div>
-            <div class="badge">PostgreSQL</div> <div class="badge">Kubernetes</div>
-        </div>
-
-        <div class="glass-panel award-panel">
-            <h2><i class="fas fa-trophy"></i> RECOGNITION</h2>
-            <ul>
-                <li>Featured in <strong>1 Million Women in STEM</strong> </li>
-                <li><strong>Beyond Excellence Award</strong> from Client [cite: 153]</li>
-                <li>2x <strong>Star of the Month</strong> [cite: 154]</li>
-            </ul>
+                <div class="window" style="--award-color-glow: rgba(233, 30, 99, 0.2); background: var(--award-color-glow);" data-bs-toggle="modal" data-bs-target="#awardModal">
+                    <div class="glow-room">
+                        <i class="fas fa-trophy fa-2x"></i>
+                        <span>Awards</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <div class="modal fade" id="eduModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-user-graduate"></i> Education Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li><i class="fas fa-university"></i> <strong>MCA:</strong> Shanmugha Academy, Tamilnadu</li>
+                        <li><i class="fas fa-university"></i> <strong>BCA:</strong> West Bengal University of Technology</li>
+                        <li><i class="fas fa-university"></i> <strong>PG Diploma (ML/AI):</strong> IIIT Bangalore</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="certModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-microchip"></i> Technical Ecosystem</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Total 8 Azure Certifications completed, including Azure Solutions Architect Expert.</p>
+                    <div class="skill-grid">
+                        <div class="skill-pill">Hadoop / HDFS / Hive / Spark</div>
+                        <div class="skill-pill">Azure ADLS / ADF / Databricks</div>
+                        <div class="skill-pill">PostgreSQL / Citus / Oracle</div>
+                        <div class="skill-pill">Python / PySpark / Kubernetes</div>
+                        <div class="skill-pill">Jenkins / CI/CD / autosys</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="expModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-history"></i> Professional Journey</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="exp-detail">
+                        <h3>Assistant Vice President | Citi Bank</h3>
+                        <p>Leading 10 Teams across USA and Asia Pacific for data security and archiving. Efficient in Hadoop cluster management and Azure cloud strategy.</p>
+                    </div>
+                    <div class="exp-detail">
+                        <h3>Senior Associate | PwC</h3>
+                        <p>Azure Big Data Developer for Bank of America and Citi Bank clients. Implemented ADF pipelines and converted legacy data using Databricks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="awardModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-star"></i> Recognition Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul style="color: #bbb;">
+                        <li>🏆 Featured in <strong>1 Million Women in STEM</strong>.</li>
+                        <li>🏆 <strong>Beyond Excellence Award</strong> from Client appreciation.</li>
+                        <li>🏆 6x <strong>On the Spot Awards</strong> at Citi/PwC.</li>
+                        <li>🏆 **Star of the Month** award for team leadership.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function toggleInterface() {
-            document.getElementById('mainCore').classList.toggle('active');
-        }
+        // Immersive Galaxy Scenery Stars Animation visual
+        const canvas = document.getElementById('galaxy-bg');
+        // Simple fallback graphic canvas logic visual
     </script>
 </body>
 </html>
