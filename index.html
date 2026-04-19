@@ -3,56 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sresthita's Christmas Cottage Portfolio</title>
+    <title>Sresthita's Magical Cottage Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body, html {
             margin: 0; padding: 0; height: 100%; width: 100%;
-            overflow: hidden; background: #0a0a1a;
+            overflow: hidden; background: #05050f;
             display: flex; justify-content: center; align-items: center;
         }
 
         /* Animated Snowfall Background */
-        #snow-canvas {
+        #snow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; pointer-events: none;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: snowfall 10s linear infinite;
         }
+        @keyframes snowfall { from { background-position: 0 0; } to { background-position: 100px 500px; } }
 
-        /* The Main House Container */
+        /* The Main House Container using the provided image */
         .house-scene {
             position: relative;
-            width: 800px; /* Adjust according to your image aspect ratio */
-            height: 600px;
-            background-image: url('https://i.etsystatic.com/56071550/r/il/f3f3cf/6950288937/il_1140xN.6950288937_aqz4.jpg');
+            width: 750px;
+            height: 650px;
+            background-image: url('https://raw.githubusercontent.com/sresthita7/my-portfolio/main/assets/house_b2d5c4.jpg');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 20px;
-            box-shadow: 0 0 100px rgba(0,0,0,0.8);
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
         }
 
-        /* Interactive Windows (Hotspots) */
-        .hotspot {
+        /* Interactive Glass Hotspots */
+        .window-spot {
             position: absolute;
             cursor: pointer;
-            transition: 0.3s;
-            border: 2px solid transparent;
+            z-index: 10;
         }
 
-        .hotspot:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 215, 0, 0.5);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        /* Mid-Opening Window Effect Visual */
-        .window-pane {
+        /* Mid-Opening Glass Panes Animation */
+        .pane-container {
             position: absolute; width: 100%; height: 100%;
-            display: flex; overflow: hidden; pointer-events: none;
+            display: flex; perspective: 1000px;
         }
 
-        .shutter {
+        .pane {
             width: 50%; height: 100%;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(2px);
@@ -60,57 +56,67 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* When opened, windows glow and shutters move */
-        .opened .shutter-left { transform: perspective(1000px) rotateY(-110deg); transform-origin: left; opacity: 0; }
-        .opened .shutter-right { transform: perspective(1000px) rotateY(110deg); transform-origin: right; opacity: 0; }
-        .opened { background: radial-gradient(circle, rgba(255, 223, 100, 0.4) 0%, transparent 80%); }
+        /* Opening Animation and Inner Glow */
+        .opened .pane-left { transform: rotateY(-110deg); transform-origin: left; opacity: 0; }
+        .opened .pane-right { transform: rotateY(110deg); transform-origin: right; opacity: 0; }
+        .opened { background: radial-gradient(circle, rgba(255, 200, 50, 0.3) 0%, transparent 80%); }
 
-        /* Positioning the Hotspots based on the Image */
-        /* Tumi egulo ektu pixel adjust kore bosiye nio image-er janla onujayi */
-        #edu-win { top: 31%; left: 45.5%; width: 9%; height: 13%; } /* Top small window */
-        #exp-win { top: 56%; left: 59%; width: 15%; height: 18%; } /* Right window */
-        #cert-door { top: 59%; left: 37.5%; width: 15%; height: 21%; border-radius: 50% 50% 0 0; } /* Door area */
-        #award-win { top: 45%; left: 5%; width: 10%; height: 10%; opacity: 0; } /* Example for another hidden spot */
+        /* Absolute Positioning for Hotspots based on your Image b2d5c4 */
+        #edu-win { top: 30.5%; left: 37.3%; width: 7.2%; height: 10%; } /* Top Window */
+        #exp-win { top: 49.5%; left: 30.8%; width: 10.5%; height: 14%; } /* Left Window */
+        #tech-win { top: 50.8%; left: 58.2%; width: 10.5%; height: 13%; } /* Right Window */
+        #cert-door { top: 51%; left: 40.5%; width: 13.5%; height: 23%; border-radius: 50% 50% 0 0; } /* Main Door */
 
-        /* Modal Styling */
+        /* Modal Styles */
         .modal-content {
-            background: rgba(20, 20, 40, 0.95);
-            backdrop-filter: blur(10px);
-            border: 2px solid #ffd700; color: #fff;
-            border-radius: 20px; box-shadow: 0 0 40px rgba(0,0,0,1);
+            background: rgba(10, 10, 25, 0.95);
+            backdrop-filter: blur(15px);
+            border: 2px solid gold; color: white;
+            border-radius: 25px; box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
         }
-        .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .modal-title i { color: #ffd700; margin-right: 10px; }
-
+        .modal-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .modal-title i { color: gold; margin-right: 12px; }
+        .skill-badge {
+            display: inline-block; padding: 5px 12px; margin: 4px;
+            background: rgba(255, 215, 0, 0.1); border: 1px solid gold;
+            border-radius: 15px; font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="snow-canvas"></canvas>
+    <div id="snow"></div>
 
     <div class="house-scene">
-        <div id="edu-win" class="hotspot" onclick="openInfo('eduModal', this)">
-            <div class="window-pane">
-                <div class="shutter shutter-left"></div>
-                <div class="shutter shutter-right"></div>
+        <div id="edu-win" class="window-spot" onclick="openModal('eduModal', this)">
+            <div class="pane-container">
+                <div class="pane pane-left"></div>
+                <div class="pane pane-right"></div>
             </div>
         </div>
 
-        <div id="exp-win" class="hotspot" onclick="openInfo('expModal', this)">
-            <div class="window-pane">
-                <div class="shutter shutter-left"></div>
-                <div class="shutter shutter-right"></div>
+        <div id="exp-win" class="window-spot" onclick="openModal('expModal', this)">
+            <div class="pane-container">
+                <div class="pane pane-left"></div>
+                <div class="pane pane-right"></div>
             </div>
         </div>
 
-        <div id="cert-door" class="hotspot" onclick="openInfo('certModal', this)"></div>
+        <div id="tech-win" class="window-spot" onclick="openModal('techModal', this)">
+            <div class="pane-container">
+                <div class="pane pane-left"></div>
+                <div class="pane pane-right"></div>
+            </div>
+        </div>
+
+        <div id="cert-door" class="window-spot" onclick="openModal('certModal', this)"></div>
     </div>
 
     <div class="modal fade" id="eduModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-graduation-cap"></i> Education Details</h5>
+                    <h5 class="modal-title"><i class="fas fa-graduation-cap"></i> Education Detail [cite: 30]</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -124,44 +130,73 @@
         </div>
     </div>
 
+    <div class="modal fade" id="expModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-briefcase"></i> Experience [cite: 50]</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Citi Bank | Assistant Vice President [cite: 51]</strong> (2023-Till date [cite: 51]):</p>
+                    <ul>
+                        <li>Managing 10 teams across USA and APAC regions for data security[cite: 70].</li>
+                        <li>Leading Hadoop architecture optimization and data migration[cite: 71, 59].</li>
+                    </ul>
+                    <hr>
+                    <p><strong>PwC | Senior Associate [cite: 75]</strong> (2021-2023 [cite: 77]):</p>
+                    <ul>
+                        <li>Azure Data Factory and Databricks development for Bank of America[cite: 78, 80].</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="techModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-code"></i> Technical Arsenal [cite: 36]</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="skill-badge">Hadoop [cite: 37]</div><div class="skill-badge">Spark [cite: 37]</div>
+                    <div class="skill-badge">Azure [cite: 39]</div><div class="skill-badge">Databricks [cite: 42]</div>
+                    <div class="skill-badge">Python [cite: 46]</div><div class="skill-badge">Kubernetes [cite: 48]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="certModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-certificate"></i> Certifications [cite: 127]</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>Azure Solutions Architect Expert [cite: 134]</li>
+                        <li>AZ-900, AZ-204, DP-203, DP-300 [cite: 128, 129, 132, 133]</li>
+                        <li>Featured among 1 Million Women in STEM [cite: 158]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simple Snowfall Logic
-        const canvas = document.getElementById('snow-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function initSnow() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            for(let i=0; i<100; i++) particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*3+1, d: Math.random()*1 });
-        }
-
-        function drawSnow() {
-            ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            ctx.beginPath();
-            particles.forEach(p => {
-                ctx.moveTo(p.x, p.y);
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-                p.y += p.d + 1;
-                if(p.y > canvas.height) p.y = -10;
-            });
-            ctx.fill();
-            requestAnimationFrame(drawSnow);
-        }
-
-        function openInfo(modalId, element) {
+        function openModal(modalId, element) {
             element.classList.add('opened');
             const myModal = new bootstrap.Modal(document.getElementById(modalId));
             myModal.show();
-            // Reset window after closing modal
             document.getElementById(modalId).addEventListener('hidden.bs.modal', () => {
                 element.classList.remove('opened');
             });
         }
-
-        initSnow(); drawSnow();
     </script>
 </body>
 </html>
