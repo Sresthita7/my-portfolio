@@ -13,7 +13,7 @@
             --border: rgba(255, 255, 255, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
         body {
             background: #02020a;
@@ -22,7 +22,7 @@
             min-height: 100vh;
         }
 
-        /* Deep Galaxy Background with Glowing Nebula */
+        /* High-Intensity Galaxy Background */
         #galaxy-bg {
             position: fixed;
             top: 0; left: 0;
@@ -33,19 +33,18 @@
 
         .nebula {
             position: fixed;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255, 0, 127, 0.1) 0%, transparent 70%);
-            filter: blur(100px);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.15) 0%, transparent 70%);
+            filter: blur(120px);
             z-index: -1;
-            animation: drift 20s infinite alternate;
+            animation: drift 15s infinite alternate ease-in-out;
         }
 
         @keyframes drift {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
+            from { transform: translate(-20%, -20%) scale(1); }
+            to { transform: translate(30%, 30%) scale(1.2); }
         }
 
-        /* Layout */
         .container {
             display: grid;
             grid-template-columns: 400px 1fr;
@@ -61,30 +60,22 @@
             top: 60px;
             height: fit-content;
             background: var(--glass);
-            backdrop-filter: blur(40px);
+            backdrop-filter: blur(50px);
             border: 1px solid var(--border);
             border-radius: 40px;
-            padding: 40px 20px;
+            padding: 50px 25px;
             text-align: center;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
         }
 
         .liquid-avatar {
-            width: 220px; height: 220px;
+            width: 200px; height: 200px;
             margin: 0 auto 30px;
             background: linear-gradient(45deg, var(--turq), var(--pink));
             padding: 4px;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morphing 10s infinite;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
-        }
-
-        .liquid-avatar img {
-            width: 100%; height: 100%;
-            border-radius: inherit;
-            object-fit: cover;
-            background: #111;
+            animation: morphing 8s infinite ease-in-out;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.5);
         }
 
         @keyframes morphing {
@@ -93,83 +84,89 @@
         }
 
         .name-text {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 900;
             background: linear-gradient(to right, #fff, var(--turq), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
-        .contact-pill {
+        /* Clickable Contact Links */
+        .contact-list { margin-top: 35px; text-align: left; }
+
+        .contact-link {
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px 20px;
-            border-radius: 15px;
-            margin-top: 15px;
-            font-size: 0.9rem;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-decoration: none;
             border: 1px solid transparent;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .contact-pill:hover { border-color: var(--turq); background: rgba(0, 242, 255, 0.1); }
+        .contact-link:hover {
+            transform: scale(1.05);
+            background: rgba(0, 242, 255, 0.1);
+            border-color: var(--turq);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2);
+        }
+
+        .contact-link i { font-size: 1.2rem; min-width: 25px; }
 
         /* iPhone Liquid Glass Card */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(25px);
             border: 1px solid var(--border);
             border-radius: 35px;
-            padding: 45px;
+            padding: 40px;
             margin-bottom: 30px;
             position: relative;
-            overflow: hidden; /* For water ripple */
-            transition: 0.5s;
+            overflow: hidden;
+            transition: 0.4s;
         }
 
         .glass-card:hover {
-            border-color: var(--turq);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            border-color: rgba(0, 242, 255, 0.4);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        /* Liquid Ripple Animation (iPhone Style) */
+        /* Water Ripple Effect */
         .water-drop {
             position: absolute;
-            background: radial-gradient(circle, rgba(0, 242, 255, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.4) 0%, transparent 75%);
             border-radius: 50%;
             pointer-events: none;
             transform: scale(0);
-            animation: ripple 0.8s ease-out;
+            animation: ripple 0.9s ease-out;
         }
 
         @keyframes ripple {
             to { transform: scale(4); opacity: 0; }
         }
 
-        .section-icon {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--turq), var(--pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        h2 { font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+        h2 i { color: var(--turq); }
 
-        .exp-detail {
-            border-left: 3px solid var(--pink);
+        .exp-item {
+            border-left: 2px solid var(--pink);
             padding-left: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        .exp-detail h3 { color: var(--turq); font-size: 1.4rem; }
-        .exp-detail span { color: #888; font-size: 0.9rem; }
-        .exp-detail p { margin-top: 8px; font-size: 0.95rem; color: #ddd; }
+        .exp-item h3 { color: var(--turq); margin-bottom: 5px; }
+        .exp-item p { color: #bbb; line-height: 1.6; }
 
-        .pill-box {
+        .pill {
             display: inline-block;
             padding: 8px 18px;
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border);
             border-radius: 50px;
             margin: 5px;
@@ -177,102 +174,101 @@
             transition: 0.3s;
         }
 
-        .pill-box:hover { background: var(--turq); color: black; box-shadow: 0 0 15px var(--turq); }
+        .pill:hover { background: var(--turq); color: #000; box-shadow: 0 0 15px var(--turq); }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
             .container { grid-template-columns: 1fr; }
-            .sidebar { position: relative; top: 0; }
+            .sidebar { position: relative; top: 0; width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <canvas id="galaxy-bg"></canvas>
-    <div class="nebula" style="top: 10%; left: 10%;"></div>
-    <div class="nebula" style="bottom: 10%; right: 10%; background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);"></div>
+    <div class="nebula" style="top: -10%; left: -10%;"></div>
+    <div class="nebula" style="bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);"></div>
 
     <div class="container">
         <aside class="sidebar">
-            <div class="liquid-avatar">
-                <img src="YOUR_PHOTO_HERE.jpg" alt="Sresthita Mukherjee">
-            </div>
-            <h1 class="name-text">SRESTHITA</h1>
-            <p style="letter-spacing: 5px; color: var(--turq); font-weight: 300;">ASSISTANT VICE PRESIDENT</p>
+            <div class="liquid-avatar"></div> <h1 class="name-text">SRESTHITA</h1>
+            <p style="letter-spacing: 5px; color: var(--turq); font-weight: 300; margin-top: 5px;">ASSISTANT VICE PRESIDENT</p>
             
-            <div style="margin-top: 40px; text-align: left;">
-                <div class="contact-pill"><i class="fas fa-envelope" style="color:var(--turq)"></i> Sresthita7@gmail.com</div>
-                <div class="contact-pill"><i class="fas fa-phone" style="color:var(--pink)"></i> +1 (646)-387-7022</div>
-                <div class="contact-pill"><i class="fas fa-map-marker-alt" style="color:var(--turq)"></i> Denver, CO, 80202</div>
-                <div class="contact-pill"><i class="fab fa-linkedin" style="color:var(--pink)"></i> linkedin.com/in/sresthita-mukherjee</div>
+            <div class="contact-list">
+                <a href="mailto:Sresthita7@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope" style="color: var(--turq);"></i>
+                    <span>Sresthita7@gmail.com</span>
+                </a>
+                <a href="tel:+16463877022" class="contact-link">
+                    <i class="fas fa-phone" style="color: var(--pink);"></i>
+                    <span>+1 (646)-387-7022</span>
+                </a>
+                <div class="contact-link" style="cursor: default;">
+                    <i class="fas fa-map-marker-alt" style="color: var(--turq);"></i>
+                    <span>Denver, CO, 80202</span>
+                </div>
+                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin" style="color: #0077b5;"></i>
+                    <span>View LinkedIn Profile</span>
+                </a>
             </div>
         </aside>
 
         <main>
             <section class="glass-card" onclick="createRipple(event)">
-                <i class="fas fa-user-tie section-icon"></i>
-                <h2>Profile Summary</h2>
-                <p style="margin-top: 15px; line-height: 1.8; color: #ccc;">
-                    [span_0](start_span)9 years of experience in IT and Banking[span_0](end_span). [span_1](start_span)Skilled in Hadoop, Big Data analytics, and Azure[span_1](end_span). 
-                    [span_2](start_span)Completed 8 Microsoft Azure certifications including Azure Solution Architect Expert[span_2](end_span).
-                </p>
+                <h2><i class="fas fa-user-circle"></i> Profile Summary</h2>
+                [span_0](start_span)<p>Assistant Vice President with 9 years of experience in IT and Banking.[span_0](end_span) [span_1](start_span)Skilled in Hadoop, Big Data analytics, cluster management, and Azure.[span_1](end_span) [span_2](start_span)Achieved Azure Solutions Architect Expert certification after completing 8 Microsoft Azure exams (AZ-900, DP-203, etc.).[span_2](end_span)</p>
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
-                <i class="fas fa-briefcase section-icon"></i>
-                <h2>Professional Experience</h2>
-                <div class="exp-detail">
-                    <h3>Assistant Vice President</h3>
-                    <span>Citi Bank | [span_3](start_span)02/2023 - Present[span_3](end_span)</span>
-                    [span_4](start_span)<p>Managing ten teams across the USA and Asia Pacific regions for data security and archiving engineering[span_4](end_span). [span_5](start_span)Proficient in Hadoop, Solix, and Azure Cloud Architecture[span_5](end_span).</p>
+                <h2><i class="fas fa-briefcase"></i> Experience</h2>
+                <div class="exp-item">
+                    <h3>Citi Bank | AVP</h3>
+                    [span_3](start_span)<p style="color: var(--turq); font-size: 0.9rem;">Feb 2023 - Present[span_3](end_span)</p>
+                    [span_4](start_span)<p>Managing ten teams across USA and APAC regions for data security and archiving engineering.[span_4](end_span) [span_5](start_span)Working with Solix, Hadoop, Azure Data Factory, and Kubernetes.[span_5](end_span)</p>
                 </div>
-                <div class="exp-detail">
-                    <h3>Senior Associate</h3>
-                    <span>PricewaterhouseCoopers (PwC) | [span_6](start_span)09/2021 - 02/2023[span_6](end_span)</span>
-                    [span_7](start_span)<p>Worked on Azure data factory pipelines and converted JSON data into delta tables using Databricks[span_7](end_span).</p>
+                <div class="exp-item">
+                    <h3>PwC | Senior Associate</h3>
+                    [span_6](start_span)<p style="color: var(--turq); font-size: 0.9rem;">Sep 2021 - Feb 2023[span_6](end_span)</p>
+                    [span_7](start_span)[span_8](start_span)<p>Azure developer for Bank of America and Citi Bank clients.[span_7](end_span)[span_8](end_span) [span_9](start_span)Worked on ADF pipelines, Databricks, and Spark transformations.[span_9](end_span)</p>
                 </div>
-            </section>
-
-            <section class="glass-card" onclick="createRipple(event)">
-                <i class="fas fa-microchip section-icon"></i>
-                <h2>Technical Arsenal</h2>
-                <div style="margin-top: 15px;">
-                    <div class="pill-box">Azure Solution Architect</div>
-                    [span_8](start_span)[span_9](start_span)<div class="pill-box">Big Data (Hadoop, HDFS, Spark)[span_8](end_span)[span_9](end_span)</div>
-                    [span_10](start_span)<div class="pill-box">Python / PySpark[span_10](end_span)</div>
-                    [span_11](start_span)<div class="pill-box">Hive & Sqoop[span_11](end_span)</div>
-                    [span_12](start_span)<div class="pill-box">Databricks & ADF[span_12](end_span)</div>
-                    [span_13](start_span)[span_14](start_span)<div class="pill-box">SQL & RDBMS (PostgreSQL, Citus)[span_13](end_span)[span_14](end_span)</div>
-                    [span_15](start_span)[span_16](start_span)<div class="pill-box">CI/CD (Jenkins, Docker, Kubernetes)[span_15](end_span)[span_16](end_span)</div>
+                <div class="exp-item">
+                    <h3>TCS | IT Analyst</h3>
+                    [span_10](start_span)<p style="color: var(--turq); font-size: 0.9rem;">Apr 2016 - Sep 2021[span_10](end_span)</p>
+                    [span_11](start_span)[span_12](start_span)<p>Big Data developer for TD Bank cluster management.[span_11](end_span)[span_12](end_span) [span_13](start_span)Automated data delivery pipelines and managed 7 large clusters.[span_13](end_span)</p>
                 </div>
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
-                <i class="fas fa-graduation-cap section-icon"></i>
-                <h2>Education</h2>
-                <div class="exp-detail" style="border-color: var(--turq);">
-                    <h3>MCA</h3>
-                    [span_17](start_span)<span>SASTRA University, Tamilnadu[span_17](end_span)</span>
-                </div>
-                <div class="exp-detail" style="border-color: var(--turq);">
-                    <h3>PG Diploma in ML & AI</h3>
-                    [span_18](start_span)<span>IIIT Bangalore[span_18](end_span)</span>
+                <h2><i class="fas fa-code"></i> Technical Arsenal</h2>
+                <div style="margin-top: 10px;">
+                    [span_14](start_span)<div class="pill">Big Data: Hadoop, Hive, Spark[span_14](end_span)</div>
+                    [span_15](start_span)<div class="pill">Cloud: Azure, ADLS, Databricks[span_15](end_span)</div>
+                    [span_16](start_span)<div class="pill">Automation: Python, Shell Scripting[span_16](end_span)</div>
+                    [span_17](start_span)[span_18](start_span)<div class="pill">DevOps: Jenkins, CI/CD, Kubernetes[span_17](end_span)[span_18](end_span)</div>
+                    [span_19](start_span)<div class="pill">Databases: PostgreSQL, Citus, Teradata[span_19](end_span)</div>
                 </div>
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
-                <i class="fas fa-trophy section-icon"></i>
-                <h2>Major Accomplishments</h2>
-                <ul style="list-style: none; color: #ccc;">
-                    [span_19](start_span)<li>🏆 Featured among 1 Million Women in STEM[span_19](end_span)</li>
-                    [span_20](start_span)<li>⭐ Beyond Excellence Award by Client[span_20](end_span)</li>
-                    [span_21](start_span)<li>⭐ 6x 'On the Spot' Awards for Client appreciation[span_21](end_span)</li>
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                [span_20](start_span)<p><strong>MCA:</strong> SASTRA University, Tamilnadu[span_20](end_span)</p>
+                [span_21](start_span)<p><strong>BCA:</strong> WBUT, Kolkata[span_21](end_span)</p>
+                [span_22](start_span)<p><strong>PG Diploma (ML/AI):</strong> IIIT Bangalore[span_22](end_span)</p>
+            </section>
+
+            <section class="glass-card" onclick="createRipple(event)">
+                <h2><i class="fas fa-trophy"></i> Recognition</h2>
+                <ul style="list-style: none; color: #ddd;">
+                    [span_23](start_span)<li style="margin-bottom: 10px;">🏆 Featured among **1 Million Women in STEM**.[span_23](end_span)</li>
+                    [span_24](start_span)<li style="margin-bottom: 10px;">⭐ **Beyond Excellence Award** from Client.[span_24](end_span)</li>
+                    [span_25](start_span)<li style="margin-bottom: 10px;">⭐ **6x On the Spot Awards** at Citi/PwC.[span_25](end_span)</li>
                 </ul>
             </section>
         </main>
     </div>
 
     <script>
-        // 1. Hyper-Galaxy Background Animation
+        // Starfield Background
         const canvas = document.getElementById('galaxy-bg');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -281,31 +277,31 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             stars = [];
-            for(let i=0; i<250; i++) {
+            for(let i=0; i<300; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    opacity: Math.random(),
-                    speed: Math.random() * 0.3
+                    size: Math.random() * 1.8,
+                    o: Math.random(),
+                    s: Math.random() * 0.4
                 });
             }
         }
 
-        function drawStars() {
+        function draw() {
             ctx.clearRect(0,0, canvas.width, canvas.height);
-            stars.forEach(s => {
-                ctx.fillStyle = `rgba(255, 255, 255, ${s.opacity})`;
+            stars.forEach(st => {
+                ctx.fillStyle = `rgba(255, 255, 255, ${st.o})`;
                 ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+                ctx.arc(st.x, st.y, st.size, 0, Math.PI*2);
                 ctx.fill();
-                s.y += s.speed;
-                if(s.y > canvas.height) s.y = 0;
+                st.y += st.s;
+                if(st.y > canvas.height) st.y = 0;
             });
-            requestAnimationFrame(drawStars);
+            requestAnimationFrame(draw);
         }
 
-        // 2. iPhone Liquid Ripple Effect
+        // iPhone Style Water Ripple
         function createRipple(e) {
             const card = e.currentTarget;
             const drop = document.createElement("span");
@@ -317,15 +313,14 @@
             drop.style.top = `${e.clientY - rect.top - size/2}px`;
             drop.classList.add("water-drop");
 
-            const oldDrop = card.querySelector(".water-drop");
-            if(oldDrop) oldDrop.remove();
-            
+            const old = card.querySelector(".water-drop");
+            if(old) old.remove();
             card.appendChild(drop);
         }
 
         window.addEventListener('resize', initStars);
         initStars();
-        drawStars();
+        draw();
     </script>
 </body>
 </html>
