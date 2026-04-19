@@ -3,64 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sresthita Mukherjee | Executive AVP & AI Leader</title>
+    <title>Sresthita Mukherjee | Executive AVP & Azure Architect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { 
-            --p-green: #064e3b;   /* Deep Emerald */
-            --glow: #10b981;      /* Glowing Teal */
-            --bg: #01120f;        /* Dark background */
-            --text: #e2e8f0;      /* Light gray for text clarity */
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(16, 185, 129, 0.2);
+            --p-blue: #0ea5e9;    /* Sky Blue Glow */
+            --p-pink: #f472b6;    /* Soft Pink Glow */
+            --s-silver: #94a3b8;  /* Silver Text */
+            --bg: #020617;        /* Deep Dark Blue/Black */
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(14, 165, 233, 0.2);
         }
         
         body { 
-            background: radial-gradient(circle at top right, var(--p-green), var(--bg));
-            color: var(--text); 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: radial-gradient(circle at bottom left, #0c4a6e, var(--bg));
+            color: #f8fafc; 
+            font-family: 'Inter', 'Segoe UI', sans-serif; 
             margin: 0; 
             line-height: 1.6; 
-            overflow-x: hidden; 
         }
         
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
         
-        /* Premium Glass Cards */
+        /* Premium Glowy Glass Cards */
         .glass { 
-            background: var(--glass-bg); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid var(--glass-border); 
-            border-radius: 24px; 
+            background: var(--glass); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid var(--border); 
+            border-radius: 28px; 
             padding: 40px; 
-            margin-bottom: 30px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6); 
+            margin-bottom: 35px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5); 
         }
         
         /* Hero Section */
-        .hero { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 60px 0; }
-        .hero-info h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
-        .hero-info .title { color: var(--glow); font-size: 1.6rem; font-weight: 600; margin: 15px 0; }
-        .profile-pic { width: 260px; height: 260px; border-radius: 50%; border: 4px solid var(--glow); box-shadow: 0 0 40px var(--glow); object-fit: cover; }
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 50px 0; }
+        .hero-info h1 { font-size: 3.8rem; margin: 0; letter-spacing: -2px; color: #fff; }
+        .hero-info .title { color: var(--p-blue); font-size: 1.7rem; font-weight: 700; margin: 10px 0; text-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+        .hero-info .subtitle { color: var(--p-pink); font-weight: 600; font-size: 1.2rem; }
+        
+        .profile-pic { 
+            width: 250px; height: 250px; border-radius: 50%; 
+            border: 3px solid var(--p-blue); 
+            box-shadow: 0 0 30px var(--p-blue), 0 0 60px rgba(244, 114, 182, 0.2); 
+            object-fit: cover; 
+        }
 
-        /* General Grids */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { padding: 25px; background: rgba(16,185,129,0.05); border-radius: 18px; border: 1px solid transparent; transition: 0.4s ease; }
-        .card:hover { border-color: var(--glow); box-shadow: 0 0 20px var(--glow); transform: translateY(-8px); }
-        .card h4 { margin: 0 0 5px 0; color: var(--glow); font-size: 1.1rem; }
-        .card p { margin: 0; font-size: 0.85rem; opacity: 0.8; }
-        
-        /* Special Sections */
-        .section-header { border-bottom: 3px solid var(--glow); padding-bottom: 10px; margin-top: 60px; display: flex; align-items: center; gap: 15px; color: var(--glow); }
-        .timeline { border-left: 3px solid var(--glow); padding-left: 30px; margin-left: 15px; }
-        .timeline-item { position: relative; margin-bottom: 45px; }
-        .timeline-item::before { content: ''; position: absolute; left: -40px; top: 6px; width: 18px; height: 18px; background: var(--glow); border-radius: 50%; box-shadow: 0 0 15px var(--glow); }
-        
-        .chip { display: inline-block; background: rgba(16,185,129,0.15); color: var(--glow); padding: 5px 12px; border-radius: 20px; margin: 4px; font-size: 0.8rem; font-weight: 500; }
-        .btn { background: var(--glow); color: var(--bg); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .btn:hover { box-shadow: 0 0 25px var(--glow); }
-        
-        footer { text-align: center; opacity: 0.5; padding: 60px; font-weight: 500; }
+        /* Grids & Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { 
+            padding: 25px; background: rgba(255,255,255,0.02); 
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); 
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .card:hover { 
+            border-color: var(--p-pink); 
+            box-shadow: 0 0 20px rgba(244, 114, 182, 0.2); 
+            transform: translateY(-5px); 
+        }
+        .card h4 { margin: 10px 0; color: var(--p-blue); }
+        .card i { font-size: 2rem; color: var(--p-pink); margin-bottom: 10px; }
+
+        /* Timeline Style */
+        .section-header { border-left: 5px solid var(--p-pink); padding-left: 15px; margin: 50px 0 25px; font-size: 2rem; color: #fff; display: flex; align-items: center; gap: 15px; }
+        .timeline { border-left: 2px solid var(--p-blue); padding-left: 30px; margin-left: 10px; }
+        .timeline-item { margin-bottom: 40px; position: relative; }
+        .timeline-item::before { 
+            content: ''; position: absolute; left: -41px; top: 5px; 
+            width: 20px; height: 20px; background: var(--bg); 
+            border: 3px solid var(--p-pink); border-radius: 50%; box-shadow: 0 0 10px var(--p-pink);
+        }
+
+        .btn { 
+            background: linear-gradient(90deg, var(--p-blue), var(--p-pink)); 
+            color: #fff; padding: 12px 30px; border-radius: 50px; 
+            text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; 
+            transition: 0.3s; 
+        }
+        .btn:hover { box-shadow: 0 0 25px var(--p-blue); opacity: 0.9; }
+
+        footer { text-align: center; padding: 60px; color: var(--s-silver); font-size: 0.9rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -69,104 +91,90 @@
         <div class="hero glass">
             <div class="hero-info">
                 <h1>Sresthita Mukherjee</h1>
-                <div class="title">Azure Solutions Architect Expert | AVP @ Citi Bank</div>
-                <p>Leading Enterprise Cloud Strategy & Generative AI solutions with 9+ years of experience across Banking and IT.</p>
-                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
+                <div class="title">Assistant Vice President @ Citi Bank</div>
+                <div class="subtitle">Azure Solutions Architect Expert | Gen AI Leader</div>
+                <p style="color: var(--s-silver); max-width: 600px;">9+ years of professional leadership in Cloud Transformation, Data Security Engineering, and AI Strategies.</p>
+                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn"><i class="fab fa-linkedin"></i> View LinkedIn</a>
             </div>
-            <img src="https://via.placeholder.com/260" alt="Sresthita" class="profile-pic">
+            <img src="https://via.placeholder.com/250" alt="Sresthita" class="profile-pic">
         </div>
 
-        <div class="section-header">
-            <i class="fas fa-briefcase fa-2x"></i>
-            <h2>Professional Journey</h2>
-        </div>
-        <div class="glass" style="margin-top:20px;">
+        <div class="section-header"><i class="fas fa-rocket"></i> Career Timeline</div>
+        <div class="glass">
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>Assistant Vice President - Citi Bank</h3>
-                    <p style="color:var(--glow)">2023 - Present | Lead Cloud Architect</p>
-                    <p>Managing global teams, data security engineering, and cloud optimization.</p>
+                    <h3 style="color: var(--p-blue);">Assistant Vice President - Citi Bank</h3>
+                    <p style="color: var(--s-silver);">2023 - Present | Global Data Security</p>
+                    <p>Managing 10 global teams, architecting secure cloud solutions, and driving multi-cloud strategy.</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Senior Associate - PwC</h3>
-                    <p style="color:var(--glow)">2021 - 2023 | Cloud Development</p>
-                    <p>Built complex data pipelines and cloud architectures for financial clients.</p>
+                    <h3 style="color: var(--p-blue);">Senior Associate - PwC</h3>
+                    <p style="color: var(--s-silver);">2021 - 2023 | Senior Cloud Architect</p>
+                    <p>Designed large-scale data delivery pipelines for leading financial organizations.</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>IT Analyst - TCS</h3>
-                    <p style="color:var(--glow)">2016 - 2021 | Big Data Hadoop Specialist</p>
-                    <p>Led data delivery pipelines and cluster management.</p>
+                    <h3 style="color: var(--p-blue);">IT Analyst - TCS</h3>
+                    <p style="color: var(--s-silver);">2016 - 2021 | Big Data Specialist</p>
+                    <p>Handled critical cluster management and high-volume data processing tasks.</p>
                 </div>
             </div>
         </div>
 
-        <div class="section-header">
-            <i class="fas fa-graduation-cap fa-2x"></i>
-            <h2>Education</h2>
-        </div>
+        <div class="section-header"><i class="fas fa-university"></i> Academic Profile</div>
         <div class="grid">
-            <div class="card edu">
-                <span style="opacity:0.8; font-weight:600;">MCA</span>
-                <h4>SASTRA University</h4>
-                <p>shanmugha Arts, Science, Technology & Research Academy</p>
+            <div class="card">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>MCA</h4>
+                <p>SASTRA University</p>
+                <p style="font-size: 0.8rem; color: var(--s-silver);">Master of Computer Applications</p>
             </div>
-            <div class="card edu">
-                <span style="opacity:0.8; font-weight:600;">ML & AI</span>
-                <h4>IIIT Bangalore</h4>
-                <p>Specialization in Machine Learning Models.</p>
+            <div class="card">
+                <i class="fas fa-microchip"></i>
+                <h4>PG Diploma ML/AI</h4>
+                <p>IIIT Bangalore</p>
+                <p style="font-size: 0.8rem; color: var(--s-silver);">Machine Learning & Artificial Intelligence</p>
             </div>
-            <div class="card edu">
-                <span style="opacity:0.8; font-weight:600;">BCA</span>
-                <h4>WBUT</h4>
-                <p>Bachelor of Computer Application</p>
+            <div class="card">
+                <i class="fas fa-book"></i>
+                <h4>BCA</h4>
+                <p>WBUT</p>
+                <p style="font-size: 0.8rem; color: var(--s-silver);">Bachelor of Computer Application</p>
             </div>
         </div>
 
-        <div class="section-header">
-            <i class="fas fa-palette fa-2x"></i>
-            <h2>Creativity & Impact</h2>
-        </div>
-        <div class="grid">
-            <div class="card art">
-                <span style="opacity:0.8; font-weight:600;">Fine Arts (Painting)</span>
-                <h4>Senior Diploma</h4>
-                <p>Awarded Distinction (Pracheen Kala Kendra).</p>
-            </div>
-            <div class="card art">
-                <span style="opacity:0.8; font-weight:600;">Dance</span>
-                <h4>Kathak & Bharatnatyam</h4>
-                <p> trained dancer.</p>
-            </div>
-            <div class="card art">
-                <span style="opacity:0.8; font-weight:600;">STEM Impact</span>
-                <h4>Women in STEM</h4>
-                <p>Featured contributor to technology and diversity.</p>
-            </div>
+        <div class="section-header"><i class="fas fa-certificate"></i> Professional Certifications</div>
+        <div class="grid glass">
+            <div class="card"><i class="fab fa-google"></i><h4>Gen AI Leader</h4><p>Google</p></div>
+            <div class="card"><i class="fab fa-microsoft"></i><h4>Solutions Architect Expert</h4><p>Microsoft Azure</p></div>
+            <div class="card"><i class="fab fa-microsoft"></i><h4>Azure Data Engineer</h4><p>Microsoft Azure</p></div>
+            <div class="card"><i class="fab fa-redhat"></i><h4>OpenShift Virtualization</h4><p>Red Hat</p></div>
+            <div class="card"><i class="fab fa-redhat"></i><h4>Event-Driven Ansible</h4><p>Red Hat</p></div>
+            <div class="card"><i class="fas fa-database"></i><h4>Big Data with Hive</h4><p>LinkedIn Learning</p></div>
+            <div class="card"><i class="fas fa-project-diagram"></i><h4>Scrum Master</h4><p>LearnQuest</p></div>
+            <div class="card"><i class="fas fa-globe"></i><h4>WES Certified</h4><p>World Education Services</p></div>
         </div>
 
-        <div class="section-header">
-            <i class="fas fa-certificate fa-2x"></i>
-            <h2>Professional Certifications</h2>
-        </div>
-        <div class="grid glass" style="margin-top:20px;">
-            <div class="card"><i class="fas fa-brain"></i><p>Generative AI Leader (Google)</p></div>
-            <div class="card"><i class="fas fa-brain"></i><p>AI Fundamentals (Google)</p></div>
-            <div class="card"><i class="fas fa-brain"></i><p>PG Diploma in ML & AI (IIITB)</p></div>
-            <div class="card"><i class="fas fa-crown"></i><p>Solutions Architect Expert (Azure)</p></div>
-            <div class="card"><i class="fas fa-database"></i><p>Azure Data Engineer (Microsoft)</p></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><p>Security Engineer (Microsoft)</p></div>
-            <div class="card"><i class="fas fa-code"></i><p>Azure Developer (Microsoft)</p></div>
-            <div class="card"><i class="fas fa-server"></i><p>Azure Administrator (Microsoft)</p></div>
-            <div class="card"><i class="fas fa-brain"></i><p>AI Fundamentals (Microsoft)</p></div>
-            <div class="card"><i class="fas fa-microchip"></i><p>OpenShift Virtualization (Red Hat)</p></div>
-            <div class="card"><i class="fas fa-microchip"></i><p>Event-Driven Ansible (Red Hat)</p></div>
-            <div class="card"><i class="fas fa-chart-line"></i><p>Big Data with Hive (LinkedIn)</p></div>
-            <div class="card"><i class="fas fa-users"></i><p>Scrum Master Training (LearnQuest)</p></div>
-            <div class="card"><i class="fas fa-award"></i><p>WES Credential Evaluation</p></div>
+        <div class="section-header"><i class="fas fa-palette"></i> Creativity & Impact</div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-paint-brush"></i>
+                <h4>Fine Arts (Painting)</h4>
+                <p>Senior Diploma with Distinction from Pracheen Kala Kendra.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-female"></i>
+                <h4>1 Million Women in STEM</h4>
+                <p>Featured for contribution to technology and gender diversity in STEM.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-music"></i>
+                <h4>Cultural Arts</h4>
+                <p>Trained in Kathak and Bharatnatyam with multiple performances.</p>
+            </div>
         </div>
 
         <footer>
-            © 2026 Sresthita Mukherjee | Assistant Vice President @ Citi | Cloud & AI Specialist
+            &copy; 2026 Sresthita Mukherjee | Built with Sky Blue, Silver & Pink Glow
         </footer>
     </div>
 </body>
