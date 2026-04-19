@@ -16,20 +16,14 @@
             backdrop-filter: blur(12px); 
             border: 1px solid rgba(16,185,129,0.2); 
             border-radius: 24px; 
-            padding: 50px; /* Padding barano hoyeche jate dhaar theke shore thake */
+            padding: 50px; 
             margin-bottom: 30px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.6); 
         }
         
-        /* Hero Section - Balanced Alignment */
-        .hero { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 50px; 
-            padding: 40px 10px; 
-        }
-        .hero-info { flex: 1; padding-left: 10px; } /* Name section ektu bhetore sora kora hoyeche */
+        /* Hero Section */
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 40px 10px; }
+        .hero-info { flex: 1; padding-left: 20px; }
         .hero-info h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
         .hero-info .title { color: var(--glow); font-size: 1.6rem; font-weight: 600; margin: 15px 0; }
         
@@ -48,7 +42,7 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
         .card { text-align: center; padding: 25px; background: rgba(16,185,129,0.05); border-radius: 18px; border: 1px solid transparent; transition: 0.4s ease; }
         .card:hover { border-color: var(--glow); box-shadow: 0 0 20px var(--glow); transform: translateY(-8px); }
-        .card i { font-size: 2.8rem; color: var(--glow); margin-bottom: 15px; }
+        .card i { font-size: 3rem; color: var(--glow); margin-bottom: 15px; }
 
         /* Timeline */
         .timeline { border-left: 3px solid var(--glow); padding-left: 35px; margin-left: 15px; }
@@ -59,82 +53,97 @@
         .chip { display: inline-block; background: rgba(16,185,129,0.15); color: var(--glow); padding: 6px 18px; border-radius: 30px; margin: 6px; font-weight: 500; font-size: 0.9rem; }
         
         .btn { background: var(--glow); color: var(--bg); padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 25px; transition: 0.3s; }
-        .btn:hover { box-shadow: 0 0 25px var(--glow); }
+        .btn:hover { box-shadow: 0 0 25px var(--glow); opacity: 0.9; }
     </style>
 </head>
 <body>
     <div class="container">
+        
         <div class="hero glass">
             <div class="hero-info">
                 <h1>Sresthita Mukherjee</h1>
                 <div class="title">Azure Solutions Architect Expert | AVP @ Citi Bank</div>
-                <p>9+ years of leadership in IT & Banking industry[cite: 6]. Driving secure Cloud Transformation at global scale[cite: 7].</p>
+                <p>Leading enterprise-scale Cloud Transformation and Data Security with 9+ years of professional excellence.</p>
                 <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
             </div>
             <div class="profile-pic-container">
-                <img src="https://via.placeholder.com/260" alt="Upload Photo" class="profile-pic">
+                <img src="https://via.placeholder.com/260" alt="Sresthita Mukherjee" class="profile-pic">
             </div>
         </div>
 
         <div class="glass">
-            <h2 style="color: var(--glow);"><i class="fas fa-briefcase"></i> Professional Journey</h2>
+            <h2 style="color: var(--glow); margin-bottom: 30px;"><i class="fas fa-briefcase"></i> Professional Journey</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <h3>Assistant Vice President - Citi Bank</h3>
-                    <p>Managing 10 global teams across USA and APAC regions[cite: 51, 70]. Lead Cloud Architect for Data Security Engineering[cite: 51].</p>
+                    <p>Driving Data Security Engineering and Cloud Strategy. Managing 10+ global teams across USA and APAC regions.</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Senior Associate - PricewaterhouseCoopers (PwC)</h3>
-                    <p>Developer and Support Specialist. Built cloud pipelines and business rules for major financial clients[cite: 75, 84].</p>
+                    <h3>Senior Associate - PwC</h3>
+                    <p>Developer and Support Specialist. Architected cloud pipelines and business solutions for global financial leaders.</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>IT Analyst - Tata Consultancy Services (TCS)</h3>
-                    <p>Big Data Hadoop Specialist. Managed critical data delivery pipelines and large-scale clusters[cite: 97, 111].</p>
+                    <h3>IT Analyst - TCS</h3>
+                    <p>Big Data Hadoop Specialist. Delivered critical data delivery pipelines and managed high-scale data clusters.</p>
                 </div>
             </div>
         </div>
 
         <div class="glass">
-            <h2 style="color: var(--glow);"><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div>
-                    <p><strong>Master of Computer Application (MCA)</strong></p>
-                    <p>Shanmugha Arts, Science, Technology & Research Academy (SASTRA) [cite: 32]</p>
-                </div>
-                <div>
-                    <p><strong>Post Graduate Diploma in ML & AI</strong></p>
-                    <p>International Institute of Information Technology Bangalore (IIITB) [cite: 34]</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass">
-            <h2 style="color: var(--glow);"><i class="fas fa-trophy"></i> Key Accomplishments</h2>
+            <h2 style="color: var(--glow); margin-bottom: 30px;"><i class="fas fa-graduation-cap"></i> Education</h2>
             <div class="grid">
-                <div class="card"><p>6x 'On The Spot' Awards for Technical Excellence [cite: 151]</p></div>
-                <div class="card"><p>'Beyond Excellence' Award from Client [cite: 153]</p></div>
-                <div class="card"><p>2x 'Star of the Month' for Team Leadership [cite: 154]</p></div>
-                <div class="card"><p>Featured in 1 Million Women in STEM [cite: 158]</p></div>
+                <div class="card" style="text-align: left;">
+                    <h3 style="color: var(--glow);">MCA</h3>
+                    <p>SASTRA University</p>
+                    <p style="opacity: 0.7;">Master of Computer Applications</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <h3 style="color: var(--glow);">PG Diploma</h3>
+                    <p>IIIT Bangalore</p>
+                    <p style="opacity: 0.7;">Machine Learning & AI Specialist</p>
+                </div>
+                <div class="card" style="text-align: left;">
+                    <h3 style="color: var(--glow);">BCA</h3>
+                    <p>WBUT</p>
+                    <p style="opacity: 0.7;">Bachelor of Computer Applications</p>
+                </div>
             </div>
         </div>
 
-        <h2 style="color: var(--glow);"><i class="fas fa-certificate"></i> Azure Certifications</h2>
-        <div class="grid glass">
-            <div class="card"><i class="fas fa-award"></i><p>Solutions Architect Expert </p></div>
-            <div class="card"><i class="fas fa-database"></i><p>Azure Data Engineer [cite: 132]</p></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><p>Security Engineer [cite: 54]</p></div>
-            <div class="card"><i class="fas fa-code"></i><p>Azure Developer [cite: 129]</p></div>
-            <div class="card"><i class="fas fa-server"></i><p>Azure Administrator [cite: 133]</p></div>
-            <div class="card"><i class="fas fa-microchip"></i><p>AI Fundamentals [cite: 8]</p></div>
+        <div class="glass">
+            <h2 style="color: var(--glow); margin-bottom: 30px;"><i class="fas fa-trophy"></i> Key Accomplishments</h2>
+            <div class="grid">
+                <div class="card"><i class="fas fa-star"></i><p>6x 'On The Spot' Awards for Technical Excellence</p></div>
+                <div class="card"><i class="fas fa-medal"></i><p>'Beyond Excellence' Award from Global Client</p></div>
+                <div class="card"><i class="fas fa-users"></i><p>Multiple 'Star of the Month' for Leadership</p></div>
+                <div class="card"><i class="fas fa-female"></i><p>Featured in 1 Million Women in STEM</p></div>
+            </div>
+        </div>
+
+        <div class="glass" style="text-align: center;">
+            <h2 style="color: var(--glow); margin-bottom: 20px;">Expertise Stack</h2>
+            <div class="chip">Azure ADF</div><div class="chip">Databricks</div><div class="chip">PySpark</div>
+            <div class="chip">Hadoop</div><div class="chip">SQL Server</div><div class="chip">Solix</div>
+            <div class="chip">Kubernetes</div><div class="chip">Data Security</div><div class="chip">Spark SQL</div>
         </div>
 
         <div class="glass" style="text-align: center;">
             <h3 style="color: var(--glow);"><i class="fas fa-palette"></i> Creative Arts</h3>
-            <p>Senior Diploma in Fine Arts with Distinction (Pracheen Kala Kendra)[cite: 160]. Award winning painter and trained dancer[cite: 161, 164].</p>
+            <p>Senior Diploma in Fine Arts with Distinction (Pracheen Kala Kendra). Passionate Painter and Trained Dancer.</p>
         </div>
 
-        <footer style="text-align: center; opacity: 0.5; padding: 40px;">
-            © 2026 Sresthita Mukherjee | Azure Cloud Architecture Portfolio
+        <h2 style="color: var(--glow); margin-top: 50px;"><i class="fas fa-certificate"></i> Microsoft Azure Certifications</h2>
+        <div class="grid glass" style="margin-top: 20px;">
+            <div class="card"><i class="fas fa-crown"></i><p>Solutions Architect Expert</p></div>
+            <div class="card"><i class="fas fa-database"></i><p>Azure Data Engineer</p></div>
+            <div class="card"><i class="fas fa-user-shield"></i><p>Security Engineer</p></div>
+            <div class="card"><i class="fas fa-code"></i><p>Azure Developer</p></div>
+            <div class="card"><i class="fas fa-server"></i><p>Azure Administrator</p></div>
+            <div class="card"><i class="fas fa-microchip"></i><p>AI Fundamentals</p></div>
+        </div>
+
+        <footer style="text-align: center; opacity: 0.5; padding: 60px;">
+            © 2026 Sresthita Mukherjee | Built with Lucky Colors & Architectural Excellence
         </footer>
     </div>
 </body>
