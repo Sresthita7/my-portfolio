@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRESTHITA | Clean Premium Portfolio</title>
+    <title>SRESTHITA | Hyper-Galaxy Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --turq: #00f2ff;
             --pink: #ff007f;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
@@ -22,8 +22,8 @@
             min-height: 100vh;
         }
 
-        /* Improved Galaxy Background */
-        #galaxy-bg {
+        /* Galaxy Background Layer */
+        #galaxy-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
@@ -31,75 +31,82 @@
             background: radial-gradient(circle at 50% 50%, #0d0d2b 0%, #02020a 100%);
         }
 
+        .nebula-glow {
+            position: fixed;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.1) 0%, transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move { from { transform: translate(-10%, -10%); } to { transform: translate(20%, 20%); } }
+
         .container {
             display: grid;
             grid-template-columns: 380px 1fr;
-            gap: 30px;
+            gap: 40px;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 60px 20px;
         }
 
         /* Sidebar Profile */
         .sidebar {
             position: sticky;
-            top: 50px;
+            top: 60px;
             height: fit-content;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass);
             backdrop-filter: blur(40px);
             border: 1px solid var(--border);
-            border-radius: 35px;
-            padding: 40px 25px;
+            border-radius: 40px;
+            padding: 50px 30px;
             text-align: center;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
         }
 
-        .avatar-morph {
-            width: 180px; height: 180px;
-            margin: 0 auto 25px;
+        .avatar-liquid {
+            width: 200px; height: 200px;
+            margin: 0 auto 30px;
             background: linear-gradient(45deg, var(--turq), var(--pink));
             padding: 4px;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morphing 8s infinite ease-in-out;
+            animation: liquid-morph 8s infinite ease-in-out;
             box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
         }
 
-        @keyframes morphing {
+        @keyframes liquid-morph {
             0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
             50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
         }
 
-        .name-text {
-            font-size: 2.4rem;
+        .name-glitch {
+            font-size: 2.8rem;
             font-weight: 900;
             background: linear-gradient(to right, #fff, var(--turq), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .role { color: var(--turq); letter-spacing: 4px; font-size: 0.8rem; font-weight: 600; margin-top: 5px; text-transform: uppercase; }
-
-        .contact-box { margin-top: 30px; text-align: left; }
-
-        .contact-item {
+        .contact-link {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             background: rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            border-radius: 15px;
-            margin-bottom: 12px;
-            color: #ccc;
+            padding: 15px;
+            border-radius: 18px;
+            margin-top: 15px;
+            color: #ddd;
             text-decoration: none;
             border: 1px solid transparent;
             transition: 0.3s;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
-        .contact-item:hover {
-            transform: translateY(-3px);
-            background: rgba(0, 242, 255, 0.1);
+        .contact-link:hover {
             border-color: var(--turq);
+            background: rgba(0, 242, 255, 0.08);
+            transform: translateY(-3px);
         }
 
         /* Content Area */
@@ -107,42 +114,42 @@
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(25px);
             border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 35px;
-            margin-bottom: 25px;
+            border-radius: 35px;
+            padding: 40px;
+            margin-bottom: 30px;
             position: relative;
             overflow: hidden;
-            transition: 0.4s ease;
+            transition: 0.4s;
         }
 
-        .glass-card:hover { border-color: rgba(0, 242, 255, 0.4); background: rgba(255, 255, 255, 0.04); }
+        .glass-card:hover { border-color: var(--turq); transform: scale(1.01); }
 
-        .ripple-effect {
+        .ripple-drop {
             position: absolute;
             background: radial-gradient(circle, rgba(0, 242, 255, 0.3) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: scale(0);
-            animation: ripple-anim 0.8s ease-out;
+            animation: ripple-fx 0.8s ease-out;
         }
 
-        @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+        @keyframes ripple-fx { to { transform: scale(4); opacity: 0; } }
 
-        h2 { font-size: 1.5rem; color: var(--turq); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        h2 { font-size: 1.8rem; margin-bottom: 25px; color: var(--turq); display: flex; align-items: center; gap: 15px; }
 
-        .exp-detail { border-left: 2px solid var(--pink); padding-left: 20px; margin-bottom: 25px; }
-        .exp-detail h3 { font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
-        .exp-detail span { color: var(--turq); font-size: 0.85rem; display: block; margin-bottom: 10px; }
-        .exp-detail p { color: #bbb; font-size: 0.9rem; line-height: 1.6; }
+        .item-detail { border-left: 2px solid var(--pink); padding-left: 20px; margin-bottom: 30px; }
+        .item-detail h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+        .item-detail span { color: var(--turq); font-size: 0.9rem; display: block; margin-bottom: 10px; }
+        .item-detail p { color: #bbb; line-height: 1.6; }
 
-        .skill-pill {
+        .skill-chip {
             display: inline-block;
-            padding: 7px 15px;
-            background: rgba(0, 242, 255, 0.1);
+            padding: 8px 18px;
+            background: rgba(0, 242, 255, 0.08);
             border: 1px solid var(--turq);
-            border-radius: 20px;
-            margin: 4px;
-            font-size: 0.8rem;
+            border-radius: 50px;
+            margin: 5px;
+            font-size: 0.85rem;
             color: #fff;
         }
 
@@ -154,109 +161,98 @@
 </head>
 <body>
 
-    <canvas id="galaxy-bg"></canvas>
+    <canvas id="galaxy-canvas"></canvas>
+    <div class="nebula-glow" style="top: 10%; left: 5%;"></div>
 
     <div class="container">
         <aside class="sidebar">
-            <div class="avatar-morph"></div>
-            <h1 class="name-text">SRESTHITA</h1>
-            <p class="role">Assistant Vice President</p>
+            <div class="avatar-liquid"></div>
+            <h1 class="name-glitch">SRESTHITA</h1>
+            <p style="color: var(--turq); letter-spacing: 5px; font-size: 0.8rem; margin-top: 5px;">ASSISTANT VICE PRESIDENT</p>
             
-            <div class="contact-box">
-                <a href="mailto:Sresthita7@gmail.com" class="contact-item">
+            <div style="margin-top: 35px; text-align: left;">
+                <a href="mailto:Sresthita7@gmail.com" class="contact-link">
                     <i class="fas fa-envelope"></i> Sresthita7@gmail.com
                 </a>
-                <a href="tel:+16463877022" class="contact-item">
-                    <i class="fas fa-phone"></i> +1 (646)-387-7022
-                </a>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i> Denver, CO 80202
-                </div>
-                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" target="_blank" class="contact-item">
-                    <i class="fab fa-linkedin"></i> <strong>LinkedIn Profile</strong>
+                <div class="contact-link"><i class="fas fa-phone"></i> +1 (646)-387-7022</div>
+                <div class="contact-link"><i class="fas fa-map-marker-alt"></i> Denver, CO 80202</div>
+                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i> <strong>View LinkedIn Profile</strong>
                 </a>
             </div>
         </aside>
 
         <main>
-            <section class="glass-card" onclick="addRipple(event)">
-                <h2><i class="fas fa-user-tie"></i> Profile Summary</h2>
-                [span_0](start_span)<p>Assistant Vice President with 9 years of experience in IT and Banking[span_0](end_span). [span_1](start_span)Skilled in Hadoop, big data analytics, cluster management, and Azure[span_1](end_span). [span_2](start_span)Completed 8 Microsoft Azure certifications, achieving Azure Solution Architect Expert status[span_2](end_span).</p>
+            <section class="glass-card" onclick="ripple(event)">
+                <h2><i class="fas fa-id-card-alt"></i> Profile Summary</h2>
+                [span_0](start_span)<p>Assistant Vice President with 9 years of experience in IT and Banking[span_0](end_span). [span_1](start_span)Skilled in Hadoop, big data analytics, cluster management, and Azure Cloud[span_1](end_span). [span_2](start_span)Achieved Azure Solutions Architect Expert status with 8 Microsoft Azure certifications[span_2](end_span).</p>
             </section>
 
-            <section class="glass-card" onclick="addRipple(event)">
+            <section class="glass-card" onclick="ripple(event)">
                 <h2><i class="fas fa-briefcase"></i> Experience</h2>
-                
-                <div class="exp-detail">
+                <div class="item-detail">
                     <h3>Citi Bank | Assistant Vice President</h3>
                     <span>Feb 2023 - Present | New Jersey, USA</span>
-                    [span_3](start_span)[span_4](start_span)<p>Managing ten teams across USA and APAC regions for data security and archiving engineering[span_3](end_span)[span_4](end_span). [span_5](start_span)Leading efforts in Hadoop architecture optimization and implementing Solix cloud patches[span_5](end_span).</p>
+                    [span_3](start_span)<p>Managing ten teams across USA and APAC regions for data security and archiving engineering[span_3](end_span). [span_4](start_span)Proficient in Hadoop, Solix, and Azure Cloud Architecture[span_4](end_span). [span_5](start_span)Optimizing Hadoop architecture and implementing cloud patches[span_5](end_span).</p>
                 </div>
-
-                <div class="exp-detail">
+                <div class="item-detail">
                     <h3>PwC | Senior Associate</h3>
                     <span>Sep 2021 - Feb 2023 | New York, USA</span>
-                    [span_6](start_span)<p>Developer and Support Specialist for Bank of America and Citi Bank clients[span_6](end_span). [span_7](start_span)Worked on Azure Data Factory pipelines and used Spark to convert JSON data into delta tables[span_7](end_span).</p>
+                    [span_6](start_span)<p>Worked on Azure Data Factory pipelines and used Spark/Databricks to convert JSON data into delta tables[span_6](end_span). [span_7](start_span)Requirement gathering and creating functional specifications[span_7](end_span).</p>
                 </div>
-
-                <div class="exp-detail">
+                <div class="item-detail">
                     <h3>TCS | IT Analyst</h3>
                     <span>Apr 2016 - Sep 2021 | Kolkata, India</span>
-                    [span_8](start_span)<p>Big Data development and support for TD Bank[span_8](end_span). [span_9](start_span)Managed 7 clusters and automated data delivery pipelines to reduce manual error[span_9](end_span).</p>
+                    [span_8](start_span)<p>Big Data development for TD Bank[span_8](end_span). [span_9](start_span)Managed 7 clusters and automated delivery pipelines to reduce manual error[span_9](end_span).</p>
                 </div>
             </section>
 
-            <section class="glass-card" onclick="addRipple(event)">
-                <h2><i class="fas fa-laptop-code"></i> Technical Arsenal</h2>
-                <div>
-                    <div class="skill-pill">Big Data: Hadoop, Hive, Spark, Sqoop</div>
-                    <div class="skill-pill">Cloud: Azure, Solix, ADLS, Databricks</div>
-                    <div class="skill-pill">DevOps: Jenkins, Kubernetes, Docker, CI/CD</div>
-                    <div class="skill-pill">DB: PostgreSQL, Citus, Oracle, Teradata</div>
-                    <div class="skill-pill">Automation: Python, Unix Shell Scripting</div>
-                </div>
+            <section class="glass-card" onclick="ripple(event)">
+                <h2><i class="fas fa-code"></i> Technical Arsenal</h2>
+                <div class="skill-chip">Hadoop, HDFS, Hive, Sqoop</div>
+                <div class="skill-chip">Azure, ADLS, Databricks</div>
+                <div class="skill-chip">Spark, PySpark, Python</div>
+                <div class="skill-chip">PostgreSQL, Citus, Oracle</div>
+                <div class="skill-chip">Jenkins, Kubernetes, Docker</div>
             </section>
 
-            <section class="glass-card" onclick="addRipple(event)">
+            <section class="glass-card" onclick="ripple(event)">
                 <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-                <div class="exp-detail" style="border-color: var(--turq);">
-                    <h3>Shanmugha Academy (SASTRA University)</h3>
-                    [span_10](start_span)<p>Master of Computer Application (MCA)[span_10](end_span)</p>
+                <div class="item-detail" style="border-color: var(--turq);">
+                    <h3>MCA | SASTRA University</h3>
+                    [span_10](start_span)<p>Master of Computer Application (Tamilnadu)[span_10](end_span)</p>
                 </div>
-                <div class="exp-detail" style="border-color: var(--turq);">
-                    <h3>West Bengal University of Technology</h3>
-                    [span_11](start_span)<p>Bachelor of Computer Application (BCA)[span_11](end_span)</p>
+                <div class="item-detail" style="border-color: var(--turq);">
+                    <h3>BCA | WBUT</h3>
+                    [span_11](start_span)<p>Bachelor of Computer Application (Kolkata)[span_11](end_span)</p>
                 </div>
-                <div class="exp-detail" style="border-color: var(--turq);">
-                    <h3>IIIT Bangalore</h3>
-                    [span_12](start_span)<p>PG Diploma in ML and Artificial Intelligence[span_12](end_span)</p>
+                <div class="item-detail" style="border-color: var(--turq);">
+                    <h3>PG Diploma | IIIT Bangalore</h3>
+                    [span_12](start_span)<p>Machine Learning & AI[span_12](end_span)</p>
                 </div>
             </section>
 
-            <section class="glass-card" onclick="addRipple(event)">
-                <h2><i class="fas fa-award"></i> Recognition</h2>
-                <ul style="list-style: none; color: #bbb;">
-                    [span_13](start_span)<li style="margin-bottom: 10px;">🏆 Featured among <strong>1 Million Women in STEM</strong>[span_13](end_span).</li>
-                    [span_14](start_span)<li style="margin-bottom: 10px;">⭐ <strong>Beyond Excellence Award</strong> from Client[span_14](end_span).</li>
-                    [span_15](start_span)<li style="margin-bottom: 10px;">⭐ <strong>6x On the Spot Awards</strong> for client appreciation[span_15](end_span).</li>
-                    [span_16](start_span)<li style="margin-bottom: 10px;">🏆 Best team player award from PWC London team[span_16](end_span).</li>
-                </ul>
+            <section class="glass-card" onclick="ripple(event)">
+                <h2><i class="fas fa-trophy"></i> Recognition</h2>
+                [span_13](start_span)<p>🏆 Featured among **1 Million Women in STEM**[span_13](end_span).</p>
+                [span_14](start_span)<p>⭐ **Beyond Excellence Award** from Client[span_14](end_span).</p>
+                [span_15](start_span)<p>⭐ **6x On the Spot Awards** for client appreciation[span_15](end_span).</p>
+                [span_16](start_span)<p>⭐ **Star of the Month** for leading team success[span_16](end_span).</p>
             </section>
         </main>
     </div>
 
     <script>
-        // Galaxy BG Animation
-        const canvas = document.getElementById('galaxy-bg');
+        const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
 
-        function initStars() {
+        function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             stars = [];
-            for(let i=0; i<250; i++) {
-                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, sz: Math.random() * 1.5, s: Math.random() * 0.4 });
+            for(let i=0; i<300; i++) {
+                stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, sz: Math.random()*1.5, s: Math.random()*0.3 });
             }
         }
 
@@ -271,24 +267,22 @@
             requestAnimationFrame(draw);
         }
 
-        // iPhone Style Ripple
-        function addRipple(e) {
+        function ripple(e) {
             const card = e.currentTarget;
-            const rip = document.createElement("span");
+            const drop = document.createElement("span");
             const rect = card.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
-            rip.style.width = rip.style.height = `${size}px`;
-            rip.style.left = `${e.clientX - rect.left - size/2}px`;
-            rip.style.top = `${e.clientY - rect.top - size/2}px`;
-            rip.classList.add("ripple-effect");
-            const old = card.querySelector(".ripple-effect");
+            drop.style.width = drop.style.height = `${size}px`;
+            drop.style.left = `${e.clientX - rect.left - size/2}px`;
+            drop.style.top = `${e.clientY - rect.top - size/2}px`;
+            drop.classList.add("ripple-drop");
+            const old = card.querySelector(".ripple-drop");
             if(old) old.remove();
-            card.appendChild(rip);
+            card.appendChild(drop);
         }
 
-        window.addEventListener('resize', initStars);
-        initStars();
-        draw();
+        window.addEventListener('resize', init);
+        init(); draw();
     </script>
 </body>
 </html>
