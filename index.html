@@ -12,8 +12,6 @@
       --ground2:#cdd8e3;
       --wall:#ffffff;
       --roof:#f6edbf;
-      --accent:#7b1138;
-      --shadow:0 18px 36px rgba(0,0,0,.12);
     }
 
     *{box-sizing:border-box}
@@ -61,7 +59,7 @@
 
     .layout{
       display:grid;
-      grid-template-columns:1.2fr .8fr;
+      grid-template-columns:minmax(0,1fr) 380px;
       gap:28px;
       align-items:start;
       margin-top:22px;
@@ -75,6 +73,9 @@
       border:1px solid rgba(255,255,255,.65);
       background:linear-gradient(to bottom,var(--sky1),var(--sky2) 56%,var(--ground2));
       box-shadow:0 24px 50px rgba(0,0,0,.14);
+      max-width:980px;
+      width:100%;
+      justify-self:center;
     }
 
     .side{
@@ -149,7 +150,7 @@
       width:88%;
       height:56%;
       background:var(--wall);
-      box-shadow:var(--shadow);
+      box-shadow:0 18px 36px rgba(0,0,0,.12);
     }
 
     .block-lower{
@@ -160,7 +161,7 @@
       height:42%;
       background:var(--wall);
       border-radius:0 0 28px 28px;
-      box-shadow:var(--shadow);
+      box-shadow:0 18px 36px rgba(0,0,0,.12);
     }
 
     .center-top{
@@ -348,7 +349,8 @@
     .tone-sky{background:rgba(8,47,73,.92)}
 
     #educationCard{left:3%;top:52%}
-    #projectsCard{right:2%;top:16%}
+    #projectsCard{left:30%;top:40%}
+    #extraCard{right:2%;top:44%}
     #experienceCard{left:3%;top:74%}
     #awardsCard{right:2%;top:74%}
     #certificationsCard{left:56%;top:57%}
@@ -358,6 +360,7 @@
 
     @media (max-width:1100px){
       .layout{grid-template-columns:1fr}
+      .side{order:2}
     }
     @media (max-width:780px){
       .page{padding:14px}
@@ -367,6 +370,12 @@
   </style>
 </head>
 <body>
+  <div class="page">
+    <div class="hero">
+      <div class="pill">Ready HTML File</div>
+      <h1>Luxury Villa Portfolio</h1>
+      <p class="sub">This is a standalone HTML file for GitHub Pages. No React build step needed. Click the windows and main door to open portfolio content.</p>
+    </div>
 
     <div class="layout">
       <div class="scene">
@@ -408,7 +417,7 @@
             <div class="mullion v"></div><div class="mullion h"></div><div class="shine"></div>
           </div>
 
-          <div id="projectsPurpleWindow" class="window violet" data-key="projects">
+          <div id="projectsPurpleWindow" class="window violet" data-key="extra">
             <div class="shutter left"></div><div class="shutter right"></div>
             <div class="mullion v"></div><div class="mullion h"></div><div class="shine"></div>
           </div>
@@ -445,6 +454,13 @@
             <div class="item"><div class="item-title">Analytics Platform</div><div class="item-meta">Cloud reporting and insights</div></div>
           </div>
 
+          <div id="extraCard" class="card tone-rose">
+            <h3>Extra Curricular</h3>
+            <div class="item"><div class="item-title">Tech Community Contributions</div><div class="item-meta">Mentoring and collaboration</div></div>
+            <div class="item"><div class="item-title">Events and Clubs</div><div class="item-meta">Participation, organizing, speaking</div></div>
+            <div class="item"><div class="item-title">Volunteer Work</div><div class="item-meta">Community and extracurricular activities</div></div>
+          </div>
+
           <div id="experienceCard" class="card tone-amber">
             <h3>Experience</h3>
             <div class="item"><div class="item-title">Senior Software Engineer</div><div class="item-meta">Cloud, automation, enterprise systems</div></div>
@@ -455,8 +471,8 @@
           <div id="awardsCard" class="card tone-rose">
             <h3>Awards & Extras</h3>
             <div class="item"><div class="item-title">Hackathon Winner</div><div class="item-meta">Innovation and problem solving</div></div>
-            <div class="item"><div class="item-title">Tech Community Contributions</div><div class="item-meta">Mentoring and collaboration</div></div>
             <div class="item"><div class="item-title">Creative Work</div><div class="item-meta">Content, design, UI exploration</div></div>
+            <div class="item"><div class="item-title">Recognition</div><div class="item-meta">Academic and technical achievements</div></div>
           </div>
 
           <div id="certificationsCard" class="card tone-sky">
@@ -468,12 +484,25 @@
         </div>
       </div>
 
-
+      <div class="side">
+        <h2>Ready for GitHub Pages</h2>
+        <p>This file is plain HTML, CSS, and JavaScript, so GitHub Pages will render it directly.</p>
+        <ul class="note-list">
+          <li>The villa is centered better on the page</li>
+          <li>Blue window opens Projects</li>
+          <li>Purple window opens Extra Curricular</li>
+          <li>Those two no longer open together</li>
+          <li>Main door opens Certifications</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <script>
     const map = {
       education: { triggerIds: ["educationWindow"], cardId: "educationCard" },
-      projects: { triggerIds: ["projectsBlueWindow", "projectsPurpleWindow"], cardId: "projectsCard" },
+      projects: { triggerIds: ["projectsBlueWindow"], cardId: "projectsCard" },
+      extra: { triggerIds: ["projectsPurpleWindow"], cardId: "extraCard" },
       experience: { triggerIds: ["experienceWindow"], cardId: "experienceCard" },
       awards: { triggerIds: ["awardsWindow"], cardId: "awardsCard" },
       certifications: { triggerIds: ["certDoor"], cardId: "certificationsCard" },
