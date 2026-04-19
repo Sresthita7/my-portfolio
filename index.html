@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sresthita Mukherjee | Azure Solutions Architect Expert</title>
+    <style>
+        :root {
+            --primary-green: #064e3b; /* Deep Emerald */
+            --accent-green: #10b981; /* Mint Glow */
+            --bg-dark: #022c22;
+            --text-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top right, var(--primary-green), var(--bg-dark));
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        .subtitle { font-size: 1.5rem; color: var(--accent-green); font-weight: bold; }
+
+        .section { padding: 60px 20px; max-width: 1000px; margin: auto; }
+        h2 { border-left: 5px solid var(--accent-green); padding-left: 15px; margin-bottom: 30px; }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--accent-green);
+        }
+
+        .timeline { border-left: 2px solid var(--accent-green); padding-left: 20px; position: relative; }
+        .timeline-item { margin-bottom: 30px; position: relative; }
+        .timeline-item::before {
+            content: '';
+            width: 12px; height: 12px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            position: absolute; left: -27px; top: 5px;
+        }
+
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.7; }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="glass-card">
+            <h1>Sresthita Mukherjee</h1>
+            <p class="subtitle">Azure Solutions Architect Expert | Assistant Vice President</p>
+            <p>9+ Years in Cloud Architecture, Big Data & Data Security</p>
+            <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn">Connect on LinkedIn</a>
+        </div>
+    </header>
+
+    <div class="section">
+        <h2>8x Microsoft Azure Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">Azure Solutions Architect Expert</div>
+            <div class="cert-card">AZ-303 / AZ-304</div>
+            <div class="cert-card">DP-203: Data Engineer</div>
+            <div class="cert-card">DP-300: Administering Relational Databases</div>
+            <div class="cert-card">AZ-204: Azure Developer</div>
+            <div class="cert-card">AZ-900 / DP-900</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Career Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Assistant Vice President - Citi</h3>
+                <p>2023 - Present | Data Security & Archiving Leader</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Senior Associate - PwC</h3>
+                <p>2021 - 2023 | Cloud Development & Support</p>
+            </div>
+            <div class="timeline-item">
+                <h3>IT Analyst - TCS</h3>
+                <p>2016 - 2021 | Big Data & Hadoop Specialist</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Recognition & Creative Arts</h2>
+        <p>⭐ Featured in <strong>1 Million Women in STEM</strong></p>
+        <p>🎨 Distinction in <strong>Fine Arts (Painting)</strong></p>
+        <p>💃 Trained in Kathak & Bharatnatyam</p>
+    </div>
+
+    <footer>
+        &copy; 2026 Sresthita Mukherjee | Built with Lucky Colors: Green & White
+    </footer>
+
+</body>
+</html>
