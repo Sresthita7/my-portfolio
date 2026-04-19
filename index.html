@@ -1,148 +1,98 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sresthita Mukherjee</title>
+    <title>Sresthita Mukherjee | Executive AVP & Azure Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-green: #064e3b; /* Deep Emerald */
-            --accent-green: #10b981; /* Mint Glow */
-            --bg-dark: #022c22;
-            --text-white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at top right, var(--primary-green), var(--bg-dark));
-            color: var(--text-white);
-            line-height: 1.6;
-        }
-
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        .subtitle { font-size: 1.5rem; color: var(--accent-green); font-weight: bold; }
-
-        .section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-        h2 { border-left: 5px solid var(--accent-green); padding-left: 15px; margin-bottom: 30px; }
-
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .cert-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid transparent;
-            transition: 0.3s;
-        }
-
-        .cert-card:hover {
-            border-color: var(--accent-green);
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px var(--accent-green);
-        }
-
-        .timeline { border-left: 2px solid var(--accent-green); padding-left: 20px; position: relative; }
-        .timeline-item { margin-bottom: 30px; position: relative; }
-        .timeline-item::before {
-            content: '';
-            width: 12px; height: 12px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            position: absolute; left: -27px; top: 5px;
-        }
-
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; opacity: 0.7; }
+        :root { --p-green: #064e3b; --glow: #10b981; --bg: #01120f; --text: #e2e8f0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; line-height: 1.6; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
         
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 25px;
-            background: var(--accent-green);
-            color: var(--bg-dark);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-        }
+        /* Glass Cards */
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(16,185,129,0.2); border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        
+        /* Hero Section */
+        .hero { display: flex; align-items: center; gap: 40px; padding: 60px 0; }
+        .hero-info h1 { font-size: 3rem; margin: 0; }
+        .hero-info .title { color: var(--glow); font-size: 1.5rem; font-weight: 600; margin: 10px 0; }
+        .profile-pic { width: 250px; height: 250px; border-radius: 50%; border: 4px solid var(--glow); box-shadow: 0 0 30px var(--glow); }
+
+        /* Cert Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .cert-card { text-align: center; padding: 20px; background: rgba(16,185,129,0.05); border-radius: 15px; border: 1px solid transparent; transition: 0.3s; }
+        .cert-card:hover { border-color: var(--glow); box-shadow: 0 0 15px var(--glow); transform: translateY(-5px); }
+        .cert-card i { font-size: 2.5rem; color: var(--glow); margin-bottom: 10px; }
+
+        /* Timeline */
+        .timeline { border-left: 2px solid var(--glow); padding-left: 30px; margin-left: 20px; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 5px; width: 16px; height: 16px; background: var(--glow); border-radius: 50%; box-shadow: 0 0 10px var(--glow); }
+        
+        /* Skills Chips */
+        .chip { display: inline-block; background: rgba(16,185,129,0.15); color: var(--glow); padding: 5px 15px; border-radius: 20px; margin: 5px; font-weight: 500; font-size: 0.85rem; }
+
+        .btn { background: var(--glow); color: var(--bg); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 20px; }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="glass-card">
-            <h1>Sresthita Mukherjee</h1>
-            <p class="subtitle"></p>
-            <p>9+ Years in Cloud Architecture, Big Data & Data Security</p>
-            <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn">Connect on LinkedIn</a>
-        </div>
-    </header>
-
-    <div class="section">
-        <h2>8x Microsoft Azure Certifications</h2>
-        <div class="cert-grid">
-            <div class="cert-card">Azure Solutions Architect Expert</div>
-            <div class="cert-card">AZ-303 / AZ-304</div>
-            <div class="cert-card">DP-203: Data Engineer</div>
-            <div class="cert-card">DP-300: Administering Relational Databases</div>
-            <div class="cert-card">AZ-204: Azure Developer</div>
-            <div class="cert-card">AZ-900 / DP-900</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Career Journey</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Assistant Vice President - Citi</h3>
-                <p>2023 - Present | Data Security & Archiving Leader</p>
+    <div class="container">
+        <div class="hero glass">
+            <div class="hero-info">
+                <h1>Sresthita Mukherjee</h1>
+                <div class="title">Azure Solutions Architect Expert | Assistant Vice President</div>
+                <p>9+ years of expertise in IT & Banking. Driving Cloud Transformation and Multi-Cloud Strategy[cite: 6, 8, 51].</p>
+                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn">View LinkedIn</a>
             </div>
-            <div class="timeline-item">
-                <h3>Senior Associate - PwC</h3>
-                <p>2021 - 2023 | Cloud Development & Support</p>
-            </div>
-            <div class="timeline-item">
-                <h3>IT Analyst - TCS</h3>
-                <p>2016 - 2021 | Big Data & Hadoop Specialist</p>
+            <img src="https://via.placeholder.com/250" alt="Sresthita" class="profile-pic">
+        </div>
+
+        <h2 style="color: var(--glow);">8 Microsoft Azure Certifications [cite: 8]</h2>
+        <div class="grid glass">
+            <div class="cert-card"><i class="fas fa-crown"></i><br>Solutions Architect Expert</div>
+            <div class="cert-card"><i class="fas fa-database"></i><br>Azure Data Engineer</div>
+            <div class="cert-card"><i class="fas fa-user-shield"></i><br>Azure Security Engineer</div>
+            <div class="cert-card"><i class="fas fa-code"></i><br>Azure Developer Associate</div>
+            <div class="cert-card"><i class="fas fa-server"></i><br>Azure Administrator</div>
+            <div class="cert-card"><i class="fas fa-microchip"></i><br>AI Engineer Associate</div>
+        </div>
+
+        <div class="glass">
+            <h2 style="color: var(--glow);">Career Timeline & Growth</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Citi Bank | AVP, Lead Cloud Architect [cite: 51]</h3>
+                    <p>Managing 10 global teams, data security engineering, and cloud optimization[cite: 70, 71].</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>PwC | Senior Associate [cite: 75]</h3>
+                    <p>Developer and Support Specialist for major banking clients[cite: 76, 78].</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>TCS | IT Analyst [cite: 97]</h3>
+                    <p>Hadoop Specialist and Big Data processing leader[cite: 101, 111].</p>
+                </div>
             </div>
         </div>
+
+        <div class="grid">
+            <div class="glass">
+                <h3>Technical Skills [cite: 37, 39, 44]</h3>
+                <div class="chip">Azure</div><div class="chip">Hadoop</div><div class="chip">Spark</div>
+                <div class="chip">ADF</div><div class="chip">SQL Server</div><div class="chip">Solix</div>
+                <div class="chip">Kubernetes</div><div class="chip">Python</div>
+            </div>
+            <div class="glass">
+                <h3>Creative Corner & Impact</h3>
+                <p>🎨 Distinction in Fine Arts (Painting)[cite: 160].</p>
+                <p>🏆 1 Million Women in STEM Featured Profile[cite: 158].</p>
+            </div>
+        </div>
+
+        <footer style="text-align: center; opacity: 0.6; padding: 40px;">
+            © 2026 Sresthita Mukherjee | Built with Luck & Tech Excellence
+        </footer>
     </div>
-
-    <div class="section">
-        <h2>Recognition & Creative Arts</h2>
-        <p>⭐ Featured in <strong>1 Million Women in STEM</strong></p>
-        <p>🎨 Distinction in <strong>Fine Arts (Painting)</strong></p>
-        <p>💃 Trained in Kathak & Bharatnatyam</p>
-    </div>
-
-    <footer>
-        &copy; 2026 Sresthita Mukherjee | Built with Lucky Colors: Green & White
-    </footer>
-
 </body>
 </html>
