@@ -7,188 +7,167 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { 
-            --electric-blue: #0033ff; 
-            --bg-dark: #000814;       
-            --glow-silver: #ffffff;   /* Pure white for silver glow */
-            --neon-pink: #ff66b2;     /* Lighter Neon Pink for better visibility */
-            --text-light: #ffffff;
+            --turquoise: #00ced1; /* Premium Turquoise */
+            --bg-darker: #020617; 
+            --neon-pink: #ff00ff; /* Glowing Magenta/Pink */
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --silver-glow: #ffffff;
         }
         
         body { 
-            background: radial-gradient(circle at center, var(--electric-blue) 0%, var(--bg-dark) 100%);
+            background: radial-gradient(circle at center, #004d4d 0%, var(--bg-darker) 100%);
             background-attachment: fixed;
-            color: var(--text-light); 
-            font-family: 'Segoe UI', sans-serif; 
+            color: #f8fafc; 
+            font-family: 'Inter', 'Segoe UI', sans-serif; 
             margin: 0; 
         }
         
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
+        /* Container Spacing: Pulling everything inward */
+        .container { 
+            max-width: 1100px; 
+            margin: auto; 
+            padding: 40px 60px; /* Increased horizontal padding to move content inward */
+        }
         
-        /* Glass Cards with Enhanced Silver Glow */
+        /* Premium Box Shadows & Glassmorphism */
         .glass { 
-            background: rgba(255, 255, 255, 0.07); 
-            backdrop-filter: blur(15px); 
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(20px); 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 28px; 
-            padding: 40px; 
-            margin-bottom: 35px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            border-radius: 32px; 
+            padding: 45px; 
+            margin-bottom: 40px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); 
             transition: all 0.4s ease;
         }
         
         .glass:hover, .card:hover { 
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); /* Silver Glow */
-            border-color: var(--glow-silver);
-            transform: translateY(-5px);
+            box-shadow: 0 0 35px rgba(0, 206, 209, 0.3); /* Turquoise Silver Glow */
+            border-color: var(--turquoise);
+            transform: translateY(-8px);
         }
         
-        /* Hero Section with Internal Spacing */
-        .hero { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 50px; 
-            padding: 60px 40px; /* Internal spacing adjusted to pull content inward */
+        /* Hero Section - Centered Content */
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 40px 0; }
+        .hero-info h1 { 
+            font-size: 3.5rem; margin: 0; 
+            background: linear-gradient(to right, #fff, var(--turquoise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .hero-info h1 { font-size: 3.8rem; margin: 0; text-shadow: 0 0 15px rgba(0, 51, 255, 0.8); }
-        
-        /* Highlighted Pink Title - Visibility Fixed */
         .hero-info .title { 
             color: var(--neon-pink); 
-            font-size: 1.7rem; 
-            font-weight: 700; 
-            margin: 15px 0; 
-            text-shadow: 0 0 10px rgba(255, 102, 178, 0.6); 
+            font-size: 1.6rem; font-weight: 700; margin: 15px 0; 
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.4); 
         }
 
-        .profile-pic { width: 260px; height: 260px; border-radius: 50%; border: 3px solid var(--neon-pink); box-shadow: 0 0 30px var(--electric-blue); object-fit: cover; }
+        .profile-pic { 
+            width: 250px; height: 250px; border-radius: 40px; 
+            border: 2px solid var(--turquoise); 
+            box-shadow: 0 0 30px rgba(0, 206, 209, 0.4); 
+            object-fit: cover; 
+        }
 
-        /* Grids with Internal Spacing */
+        /* Grids with Padding */
         .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            padding: 0 20px; /* Internal spacing adjusted */
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; padding: 0 20px; 
         }
-        
         .card { 
-            padding: 30px; 
-            background: rgba(255, 255, 255, 0.03); 
-            border-radius: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            transition: 0.4s; 
-            text-align: center;
+            padding: 30px; background: rgba(255, 255, 255, 0.03); 
+            border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: 0.4s; text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-        
-        .card i { font-size: 2.5rem; color: var(--neon-pink); margin-bottom: 15px; }
-        .card h4 { color: #80dfff; margin-bottom: 10px; } /* Sky Blue for Sub-headers */
-        
-        /* Section Headers with Neon Pink Border and Internal Spacing */
+        .card i { font-size: 2.8rem; color: var(--turquoise); margin-bottom: 20px; }
+        .card h4 { color: #fff; margin-bottom: 8px; }
+
+        /* Section Headers */
         .section-header { 
-            border-left: 5px solid var(--neon-pink); 
-            padding-left: 20px; 
-            margin: 60px 20px 30px; /* Adjusted internal spacing */
-            font-size: 2.2rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 15px;
-            text-shadow: 0 0 10px rgba(255, 102, 178, 0.3);
+            border-left: 6px solid var(--neon-pink); 
+            padding-left: 20px; margin: 60px 20px 30px; 
+            font-size: 2.2rem; display: flex; align-items: center; gap: 20px;
+            color: #fff;
         }
 
-        /* Timeline with Internal Spacing */
+        /* Timeline with internal padding */
         .timeline { 
-            border-left: 2px solid rgba(255,255,255,0.2); 
-            padding-left: 30px; 
-            margin: 0 35px; /* Pull content inward */
+            border-left: 3px solid rgba(0, 206, 209, 0.3); 
+            padding-left: 40px; margin: 0 40px; 
         }
-        
         .timeline-item { position: relative; margin-bottom: 50px; }
-        .timeline-item h3 { color: #ffffff; }
+        .timeline-item h3 { color: var(--turquoise); }
         .timeline-item .date { color: var(--neon-pink); font-weight: bold; margin-bottom: 10px; display: block; }
         .timeline-item::before { 
-            content: ''; position: absolute; left: -41px; top: 8px; 
-            width: 18px; height: 18px; background: var(--neon-pink); 
-            border-radius: 50%; box-shadow: 0 0 15px var(--neon-pink); 
-        }
-
-        /* Footer with Internal Spacing */
-        footer { 
-            text-align: center; 
-            opacity: 0.7; 
-            padding: 80px 40px; /* Internal spacing adjusted */
-            font-size: 0.9rem; 
+            content: ''; position: absolute; left: -53px; top: 6px; 
+            width: 20px; height: 20px; background: var(--bg-darker); 
+            border: 4px solid var(--neon-pink); border-radius: 50%;
+            box-shadow: 0 0 15px var(--neon-pink); 
         }
 
         .btn { 
-            background: linear-gradient(45deg, #0055ff, var(--neon-pink)); 
-            color: white; padding: 14px 35px; border-radius: 50px; 
+            background: linear-gradient(135deg, var(--turquoise), var(--neon-pink)); 
+            color: #fff; padding: 15px 40px; border-radius: 50px; 
             text-decoration: none; font-weight: bold; display: inline-block; 
             margin-top: 25px; transition: 0.3s; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .btn:hover { box-shadow: 0 0 25px var(--neon-pink); transform: scale(1.05); }
+        .btn:hover { box-shadow: 0 0 30px rgba(0, 206, 209, 0.5); transform: scale(1.05); }
 
+        footer { text-align: center; opacity: 0.6; padding: 100px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
     <div class="container">
-        
-        <div class="hero glass">
+        <header class="hero glass">
             <div class="hero-info">
                 <h1>Sresthita Mukherjee</h1>
-                <div class="title">Azure Solutions Architect | AVP @ Citi Bank</div>
-                <p style="opacity: 0.9;">9+ years of expertise in Cloud Transformation, Data Security & AI Strategies.</p>
-                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                <div class="title">Assistant Vice President @ Citi Bank</div>
+                <p>Azure Architect | 9+ Years of Excellence in Cloud & AI Transformation.</p>
+                <a href="https://www.linkedin.com/in/sresthita-mukherjee-5161841b3" class="btn"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
             </div>
-            <img src="https://via.placeholder.com/260" alt="Sresthita" class="profile-pic">
-        </div>
+            <img src="https://via.placeholder.com/250" alt="Sresthita Mukherjee" class="profile-pic">
+        </header>
 
-        <div class="section-header"><i class="fas fa-briefcase"></i> Professional Journey</div>
+        <div class="section-header"><i class="fas fa-rocket"></i> Career Expedition</div>
         <div class="glass">
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>Assistant Vice President - Citi Bank</h3>
+                    <h3>AVP, Lead Cloud Architect - Citi Bank</h3>
                     <span class="date">2023 - Present</span>
-                    <p>Lead Cloud Architect managing global teams and secure cloud delivery.</p>
+                    <p>Managing global teams and secure cloud delivery strategies.</p>
                 </div>
                 <div class="timeline-item">
                     <h3>Senior Associate - PwC</h3>
                     <span class="date">2021 - 2023</span>
                     <p>Architected complex data pipelines for high-tier banking clients.</p>
                 </div>
-                <div class="timeline-item">
-                    <h3>IT Analyst - TCS</h3>
-                    <span class="date">2016 - 2021</span>
-                    <p>Big Data Hadoop Specialist for international banking domains.</p>
-                </div>
             </div>
         </div>
 
-        <div class="section-header"><i class="fas fa-graduation-cap"></i> Academic Excellence</div>
+        <div class="section-header"><i class="fas fa-university"></i> Education</div>
         <div class="grid">
-            <div class="card"><h4>MCA</h4><p>SASTRA University</p></div>
-            <div class="card"><h4>PG Diploma ML & AI</h4><p>IIIT Bangalore</p></div>
-            <div class="card"><h4>BCA</h4><p>WBUT</p></div>
+            <div class="card"><i class="fas fa-graduation-cap"></i><h4>MCA</h4><p>SASTRA University</p></div>
+            <div class="card"><i class="fas fa-brain"></i><h4>ML & AI</h4><p>IIIT Bangalore</p></div>
+            <div class="card"><i class="fas fa-laptop-code"></i><h4>BCA</h4><p>WBUT</p></div>
         </div>
 
-        <div class="section-header"><i class="fas fa-certificate"></i> Certifications</div>
+        <div class="section-header"><i class="fas fa-shield-alt"></i> Mastery & Credentials</div>
         <div class="grid glass">
-            <div class="card"><i class="fab fa-google"></i><h4>Gen AI Leader</h4><p>Google</p></div>
-            <div class="card"><i class="fab fa-microsoft"></i><h4>Solutions Architect Expert</h4><p>Microsoft Azure</p></div>
-            <div class="card"><i class="fab fa-redhat"></i><h4>OpenShift</h4><p>Red Hat</p></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><h4>Security Engineer</h4><p>Azure</p></div>
+            <div class="card"><i class="fab fa-google"></i><h4>Gen AI Leader</h4><p>Google Certified</p></div>
+            <div class="card"><i class="fab fa-microsoft"></i><h4>Azure Solutions Architect</h4><p>Microsoft Certified</p></div>
+            <div class="card"><i class="fab fa-redhat"></i><h4>OpenShift</h4><p>Red Hat Certified</p></div>
         </div>
 
         <div class="section-header"><i class="fas fa-palette"></i> Creativity & Impact</div>
         <div class="grid">
             <div class="card"><i class="fas fa-paint-brush"></i><h4>Fine Arts</h4><p>Senior Diploma (Distinction)</p></div>
             <div class="card"><i class="fas fa-female"></i><h4>STEM Recognition</h4><p>1 Million Women in STEM</p></div>
-            <div class="card"><i class="fas fa-music"></i><h4>Cultural Arts</h4><p>Trained Dancer</p></div>
+            <div class="card"><i class="fas fa-star"></i><h4>Cultural Arts</h4><p>Professional Dancer</p></div>
         </div>
 
         <footer>
-            © 2026 Sresthita Mukherjee | Azure Architect Portfolio
+            © 2026 Sresthita Mukherjee | Built with Turquoise & Neon Pink
         </footer>
     </div>
 </body>
