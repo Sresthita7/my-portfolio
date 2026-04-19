@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRESTHITA | Cyber-Glass Portfolio</title>
+    <title>Sresthita Mukherjee | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -12,108 +12,227 @@
             --pink: #ff007f;
             --chrome: #e0e0e0;
             --deep-black: #020205;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
 
         body {
             background: var(--deep-black);
             color: white;
             overflow-x: hidden;
             background: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #020205 100%);
+            min-height: 100vh;
         }
 
-        /* Animated Galaxy Background */
-        #canvas-stars {
+        /* Animated Galaxy & Particle Canvas */
+        #bg-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: -1;
-            opacity: 0.6;
         }
 
-        /* Fluid Glass Layout */
         .main-wrapper {
             display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 20px;
+            grid-template-columns: 400px 1fr;
+            gap: 40px;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        /* Profile Side Card - Ultra Glassmorphism */
+        /* Sidebar Profile Card */
         .sidebar {
             position: sticky;
-            top: 40px;
+            top: 60px;
             height: fit-content;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px) saturate(180%);
+            background: var(--glass);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            padding: 40px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            padding: 50px 30px;
             text-align: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
         }
 
-        .img-container {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 25px;
-            border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%; /* Liquid Shape */
+        .profile-frame {
+            width: 240px;
+            height: 240px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        /* Liquid Glass Shape around Photo */
+        .liquid-shape {
+            width: 100%; height: 100%;
             background: linear-gradient(45deg, var(--turq), var(--pink));
-            padding: 5px;
-            animation: liquid-morph 8s ease-in-out infinite;
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
         }
 
-        .img-container img {
+        .liquid-shape img {
             width: 100%; height: 100%;
             border-radius: inherit;
             object-fit: cover;
-            background: #111; /* Default background if no img */
+            background: #111;
         }
 
-        @keyframes liquid-morph {
-            0% { border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            100% { border-radius: 35% 65% 70% 30% / 30% 30% 70% 70%; }
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%; }
         }
 
-        .name-glow {
-            font-size: 2.5rem;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #fff, var(--turq), var(--pink));
+        .name-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, var(--turq));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(0,242,255,0.5));
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4));
         }
 
-        /* Glass Cards with Ripple Effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 35px;
+        .role-tag {
+            color: var(--pink);
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
             margin-bottom: 30px;
+        }
+
+        /* Information List */
+        .info-list {
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            border-color: var(--turq);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .info-item i { font-size: 1.2rem; color: var(--turq); }
+
+        /* Main Content Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 45px;
+            margin-bottom: 35px;
             position: relative;
             overflow: hidden;
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Liquid Border Shine */
-        .glass-card::after {
-            content: '';
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--turq);
+            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1);
+        }
+
+        /* Water Ripple Element */
+        .ripple {
             position: absolute;
-            inset: 0;
+            background: rgba(0, 242, 255, 0.15);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.7s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-header i {
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--pink), var(--turq));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            color: var(--chrome);
+        }
+
+        /* Details Content */
+        .exp-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid var(--pink);
+        }
+
+        .exp-item h3 { color: var(--turq); margin-bottom: 5px; }
+        .exp-item span { color: var(--sky); font-size: 0.9rem; }
+        .exp-item p { margin-top: 10px; color: #bbb; line-height: 1.6; }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--chrome);
+            transition: 0.4s;
+        }
+
+        .skill-tag:hover {
+            background: var(--turq);
+            color: black;
+            box-shadow: 0 0 20px var(--turq);
+            border-color: transparent;
+        }
+
+        /* Liquid Border Animation */
+        .liquid-border {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             border-radius: inherit;
-            padding: 2px;
-            background: linear-gradient(var(--angle), transparent, var(--turq), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            pointer-events: none;
+            border: 1px solid transparent;
+        }
+
+        .glass-card:hover .liquid-border {
+            background: linear-gradient(var(--angle), transparent, var(--turq), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
-            opacity: 0;
-            transition: 0.5s;
+            animation: rotate 4s linear infinite;
         }
 
         @property --angle {
@@ -122,248 +241,172 @@
             inherits: false;
         }
 
-        .glass-card:hover {
-            transform: scale(1.02);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(0, 242, 255, 0.3);
-        }
+        @keyframes rotate { to { --angle: 360deg; } }
 
-        .glass-card:hover::after {
-            opacity: 1;
-            animation: rotate-gradient 3s linear infinite;
+        @media (max-width: 1000px) {
+            .main-wrapper { grid-template-columns: 1fr; }
+            .sidebar { position: relative; top: 0; }
         }
-
-        @keyframes rotate-gradient {
-            to { --angle: 360deg; }
-        }
-
-        /* Water Ripple Effect CSS */
-        .ripple {
-            position: absolute;
-            background: rgba(0, 242, 255, 0.2);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple-effect 0.8s linear;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-effect {
-            to { transform: scale(4); opacity: 0; }
-        }
-
-        /* Section Specifics */
-        .title-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .title-group i {
-            font-size: 1.8rem;
-            color: var(--pink);
-            filter: drop-shadow(0 0 8px var(--pink));
-        }
-
-        .pill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .pill {
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(0,242,255,0.2);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--chrome);
-            transition: 0.3s;
-        }
-
-        .pill:hover {
-            background: var(--turq);
-            color: black;
-            box-shadow: 0 0 20px var(--turq);
-        }
-
-        .cv-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--turq), var(--sky));
-            color: black;
-            font-weight: bold;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: 0.4s;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
-        }
-
-        .cv-btn:hover {
-            letter-spacing: 2px;
-            box-shadow: 0 0 40px var(--turq);
-            transform: translateY(-3px);
-        }
-
-        /* Floating Droplets Animation */
-        .droplet {
-            position: absolute;
-            width: 15px; height: 15px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            box-shadow: inset -2px -2px 5px rgba(255,255,255,0.2);
-            animation: float 6s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-20px) translateX(10px); }
-        }
-
     </style>
 </head>
 <body>
 
-    <canvas id="canvas-stars"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
     <div class="main-wrapper">
         <aside class="sidebar">
-            <div class="img-container">
-                <img src="YOUR_PHOTO_URL_HERE" alt="Sresthita Mukherjee">
+            <div class="profile-frame">
+                <div class="liquid-shape">
+                    <img src="https://via.placeholder.com/300" alt="Sresthita Mukherjee">
+                </div>
             </div>
-            <h1 class="name-glow">SRESTHITA</h1>
-            <p style="color: var(--sky); letter-spacing: 3px; font-weight: 300; margin-top: 10px;">SOFTWARE ENGINEER</p>
-            
-            <div style="margin-top: 30px; text-align: left; font-size: 0.9rem; opacity: 0.8;">
-                <p><i class="fas fa-envelope" style="color: var(--turq)"></i> Sresthita7@gmail.com</p>
-                <p style="margin-top:10px;"><i class="fas fa-map-marker-alt" style="color: var(--pink)"></i> Denver, CO, USA</p>
-            </div>
+            <h1 class="name-title">SRESTHITA</h1>
+            <p class="role-tag">AVP • Software Engineer</p>
 
-            <a href="#" class="cv-btn">DOWNLOAD CV <i class="fas fa-arrow-right"></i></a>
+            <div class="info-list">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Sresthita7@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/sresthita</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Denver, CO, USA</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Professional Portfolio 2026</span>
+                </div>
+            </div>
         </aside>
 
-        <div class="content-area">
+        <main class="content-area">
             
-            <div class="glass-card" onclick="createRipple(event)">
-                <div class="title-group">
+            <section class="glass-card" onclick="ripple(event)">
+                <div class="liquid-border"></div>
+                <div class="section-header">
                     <i class="fas fa-briefcase"></i>
                     <h2>Work Experience</h2>
                 </div>
-                <div style="border-left: 2px solid var(--turq); padding-left: 20px;">
-                    <h3 style="color: var(--turq)">Assistant Vice President</h3>
-                    [span_0](start_span)<p>Citi Bank • 02/2023 - Present[span_0](end_span)</p>
-                    <p style="margin-top: 10px; font-size: 0.95rem; color: #ccc;">USA and APAC data security & archiving engineering. [span_1](start_span)[span_2](start_span)Managing 10 teams across regions.[span_1](end_span)[span_2](end_span)</p>
+                <div class="exp-item">
+                    <h3>Assistant Vice President</h3>
+                    <span>Citi Bank | Feb 2023 - Present</span>
+                    <p>Leading USA and APAC region's data security and archiving engineering projects. Coordinating with 10+ cross-functional teams to ensure high-performance infrastructure.</p>
                 </div>
-            </div>
+                <div class="exp-item">
+                    <h3>Software Engineer</h3>
+                    <span>PwC | Prior Experience</span>
+                    <p>Focused on cloud migration and enterprise-level application development for global clients.</p>
+                </div>
+            </section>
 
-            <div class="glass-card" onclick="createRipple(event)">
-                <div class="title-group">
+            <section class="glass-card" onclick="ripple(event)">
+                <div class="liquid-border"></div>
+                <div class="section-header">
                     <i class="fas fa-graduation-cap"></i>
                     <h2>Education</h2>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div>
-                        <h4 style="color: var(--sky)">MCA</h4>
-                        [span_3](start_span)<p>SASTRA University[span_3](end_span)</p>
-                    </div>
-                    <div>
-                        <h4 style="color: var(--sky)">PG Diploma (ML/AI)</h4>
-                        [span_4](start_span)<p>IIIT Bangalore[span_4](end_span)</p>
-                    </div>
+                <div class="exp-item" style="border-color: var(--turq);">
+                    <h3>Master of Computer Applications (MCA)</h3>
+                    <span>SASTRA University</span>
                 </div>
-            </div>
+                <div class="exp-item" style="border-color: var(--turq);">
+                    <h3>PG Diploma in ML & AI</h3>
+                    <span>IIIT Bangalore</span>
+                </div>
+            </section>
 
-            <div class="glass-card" onclick="createRipple(event)">
-                <div class="title-group">
-                    <i class="fas fa-microchip"></i>
-                    <h2>Technical Skills</h2>
+            <section class="glass-card" onclick="ripple(event)">
+                <div class="liquid-border"></div>
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Technical Expertise</h2>
                 </div>
-                <div class="pill-container">
-                    [span_5](start_span)[span_6](start_span)<span class="pill">Big Data (Hadoop, HDFS, Spark)[span_5](end_span)[span_6](end_span)</span>
-                    [span_7](start_span)<span class="pill">Azure Solution Architect[span_7](end_span)</span>
-                    [span_8](start_span)<span class="pill">Python & PySpark[span_8](end_span)</span>
-                    [span_9](start_span)[span_10](start_span)<span class="pill">Data Engineering (ADF, Databricks)[span_9](end_span)[span_10](end_span)</span>
-                    [span_11](start_span)<span class="pill">SQL/NoSQL (MySQL, PostgreSQL, Citus)[span_11](end_span)</span>
+                <div class="skills-grid">
+                    <div class="skill-tag">Azure Solution Architect</div>
+                    <div class="skill-tag">Big Data (Hadoop, Spark)</div>
+                    <div class="skill-tag">Python & PySpark</div>
+                    <div class="skill-tag">Data Engineering (ADF, Databricks)</div>
+                    <div class="skill-tag">SQL & NoSQL Databases</div>
+                    <div class="skill-tag">Cloud Infrastructure</div>
                 </div>
-            </div>
+            </section>
 
-            <div class="glass-card" onclick="createRipple(event)">
-                <div class="title-group">
+            <section class="glass-card" onclick="ripple(event)">
+                <div class="liquid-border"></div>
+                <div class="section-header">
                     <i class="fas fa-award"></i>
-                    <h2>Certifications</h2>
+                    <h2>Awards & Recognition</h2>
                 </div>
-                [span_12](start_span)[span_13](start_span)<p style="opacity: 0.8;">AZ-900, AZ-204, AZ-303, DP-203, Azure Solution Architect Expert[span_12](end_span)[span_13](end_span)</p>
-            </div>
-
-            <div class="glass-card" onclick="createRipple(event)">
-                <div class="title-group">
-                    <i class="fas fa-star"></i>
-                    <h2>Accomplishments</h2>
-                </div>
-                <ul style="list-style: none; color: #ccc; font-size: 0.95rem;">
-                    [span_14](start_span)<li>🏆 Featured among 1 Million Women in STEM[span_14](end_span)</li>
-                    [span_15](start_span)<li>⭐ Beyond Excellence Award by Client[span_15](end_span)</li>
-                    [span_16](start_span)<li>⭐ 6x 'On the Spot' Awards from Citi/PwC[span_16](end_span)</li>
+                <ul style="list-style: none; color: #ccc;">
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--pink); margin-right: 10px;"></i> Featured in "1 Million Women in STEM"</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--pink); margin-right: 10px;"></i> Beyond Excellence Award - Client Recognition</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--pink); margin-right: 10px;"></i> 6x "On the Spot" Awards at Citi & PwC</li>
                 </ul>
-            </div>
+            </section>
 
-        </div>
+        </main>
     </div>
 
     <script>
-        // 1. Galaxy Stars Animation
-        const canvas = document.getElementById('canvas-stars');
+        // 1. Galaxy Particles Animation
+        const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        let stars = [];
+        let particles = [];
 
-        function initStars() {
+        function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            for(let i=0; i<200; i++) {
-                stars.push({
+            particles = [];
+            for(let i=0; i<150; i++) {
+                particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    speed: Math.random() * 0.5
+                    radius: Math.random() * 1.5,
+                    vx: Math.random() * 0.5 - 0.25,
+                    vy: Math.random() * 0.5 - 0.25
                 });
             }
         }
 
-        function drawStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            stars.forEach(s => {
+        function animate() {
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+            particles.forEach(p => {
                 ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
                 ctx.fill();
-                s.y += s.speed;
-                if(s.y > canvas.height) s.y = 0;
+                p.x += p.vx;
+                p.y += p.vy;
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
             });
-            requestAnimationFrame(drawStars);
+            requestAnimationFrame(animate);
         }
 
-        // 2. Real Water Ripple Effect
-        function createRipple(event) {
-            const card = event.currentTarget;
+        // 2. Water Ripple Effect
+        function ripple(e) {
+            const card = e.currentTarget;
             const circle = document.createElement("span");
             const diameter = Math.max(card.clientWidth, card.clientHeight);
             const radius = diameter / 2;
 
             circle.style.width = circle.style.height = `${diameter}px`;
-            circle.style.left = `${event.clientX - card.getBoundingClientRect().left - radius}px`;
-            circle.style.top = `${event.clientY - card.getBoundingClientRect().top - radius}px`;
+            circle.style.left = `${e.clientX - card.getBoundingClientRect().left - radius}px`;
+            circle.style.top = `${e.clientY - card.getBoundingClientRect().top - radius}px`;
             circle.classList.add("ripple");
 
-            const ripple = card.getElementsByClassName("ripple")[0];
-            if (ripple) { ripple.remove(); }
+            const existing = card.getElementsByClassName("ripple")[0];
+            if (existing) existing.remove();
             card.appendChild(circle);
         }
 
-        window.addEventListener('resize', initStars);
-        initStars();
-        drawStars();
+        window.addEventListener('resize', init);
+        init();
+        animate();
     </script>
 </body>
 </html>
