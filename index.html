@@ -31,20 +31,6 @@
             background: radial-gradient(circle at 50% 50%, #0d0d2b 0%, #02020a 100%);
         }
 
-        .nebula {
-            position: fixed;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(255, 0, 127, 0.15) 0%, transparent 70%);
-            filter: blur(120px);
-            z-index: -1;
-            animation: drift 15s infinite alternate ease-in-out;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%) scale(1); }
-            to { transform: translate(30%, 30%) scale(1.2); }
-        }
-
         .container {
             display: grid;
             grid-template-columns: 400px 1fr;
@@ -92,7 +78,6 @@
             background: linear-gradient(to right, #fff, var(--turq), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
         /* Contact Links */
@@ -145,14 +130,15 @@
 
         h2 { font-size: 1.6rem; margin-bottom: 20px; color: var(--turq); display: flex; align-items: center; gap: 10px; }
 
-        .exp-item { border-left: 2px solid var(--pink); padding-left: 20px; margin-bottom: 20px; }
-        .exp-item h3 { font-size: 1.2rem; color: #fff; }
-        .exp-item p { color: #bbb; font-size: 0.95rem; margin-top: 5px; }
+        .exp-item { border-left: 2px solid var(--pink); padding-left: 20px; margin-bottom: 25px; }
+        .exp-item h3 { font-size: 1.3rem; color: #fff; margin-bottom: 5px; }
+        .exp-item span { color: var(--turq); font-size: 0.9rem; display: block; margin-bottom: 10px; }
+        .exp-item p { color: #bbb; font-size: 0.95rem; line-height: 1.6; }
 
         .skill-pill {
             display: inline-block;
             padding: 6px 15px;
-            background: rgba(0, 242, 255, 0.1);
+            background: rgba(0, 242, 255, 0.08);
             border: 1px solid var(--turq);
             border-radius: 20px;
             margin: 4px;
@@ -169,12 +155,11 @@
 <body>
 
     <canvas id="galaxy-bg"></canvas>
-    <div class="nebula" style="top: -5%; left: -5%;"></div>
 
     <div class="container">
         <aside class="sidebar">
             <div class="liquid-avatar">
-                <img src="YOUR_PHOTO_URL_HERE" alt="Profile">
+                <img src="YOUR_PHOTO_URL" alt="Sresthita Mukherjee">
             </div>
             <h1 class="name-text">SRESTHITA</h1>
             <p style="color: var(--turq); letter-spacing: 3px; font-size: 0.8rem; margin-top: 5px;">ASSISTANT VICE PRESIDENT</p>
@@ -198,57 +183,56 @@
         <main>
             <section class="glass-card" onclick="createRipple(event)">
                 <h2><i class="fas fa-id-card"></i> Profile Summary</h2>
-                [span_0](start_span)<p>Assistant Vice President with 9 years of experience in IT and Banking[span_0](end_span). [span_1](start_span)Skilled in Hadoop, Big Data analytics, cluster management, and Azure[span_1](end_span). [span_2](start_span)Completed 8 Microsoft Azure certifications, achieving Azure Solution Architect Expert status[span_2](end_span).</p>
+                [span_0](start_span)<p>Assistant Vice President with 9 years of experience in IT and Banking.[span_0](end_span) [span_1](start_span)Skilled in Hadoop, Big Data analytics, cluster management, and Azure Cloud.[span_1](end_span) [span_2](start_span)Expert in archival engineering and has achieved 8 Microsoft Azure certifications, including Azure Solution Architect Expert.[span_2](end_span)</p>
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
                 <h2><i class="fas fa-history"></i> Experience</h2>
                 <div class="exp-item">
-                    <h3>Citi Bank | AVP</h3>
-                    [span_3](start_span)<p>Feb 2023 - Present[span_3](end_span)</p>
-                    [span_4](start_span)<p>Managing USA and APAC data security and archiving engineering projects[span_4](end_span). [span_5](start_span)[span_6](start_span)Leading ten teams across regions, optimizing Hadoop architecture and Azure ETL[span_5](end_span)[span_6](end_span).</p>
+                    <h3>Citi Bank | Assistant Vice President</h3>
+                    <span>Feb 2023 - Present | New Jersey, USA</span>
+                    [span_3](start_span)<p>Managing ten teams across USA and APAC regions for data security and archiving engineering projects.[span_3](end_span) [span_4](start_span)[span_5](start_span)Leading efforts in Hadoop architecture optimization, data migration, and implementing Solix cloud patches.[span_4](end_span)[span_5](end_span)</p>
                 </div>
                 <div class="exp-item">
-                    <h3>PwC | Senior Associate</h3>
-                    [span_7](start_span)<p>Sep 2021 - Feb 2023[span_7](end_span)</p>
-                    [span_8](start_span)[span_9](start_span)<p>Worked on Azure Data Factory and Databricks for Bank of America and Citi Bank[span_8](end_span)[span_9](end_span). [span_10](start_span)Converted JSON data into delta tables using Spark[span_10](end_span).</p>
+                    <h3>PricewaterhouseCoopers (PwC) | Senior Associate</h3>
+                    <span>Sep 2021 - Feb 2023 | New York, USA</span>
+                    [span_6](start_span)[span_7](start_span)<p>Developer and Support Specialist for Bank of America and Citi Bank clients.[span_6](end_span)[span_7](end_span) [span_8](start_span)Worked on Azure Data Factory pipelines and used Spark/Databricks to convert JSON data into delta tables.[span_8](end_span)</p>
                 </div>
                 <div class="exp-item">
-                    <h3>TCS | IT Analyst</h3>
-                    [span_11](start_span)<p>Apr 2016 - Sep 2021[span_11](end_span)</p>
-                    [span_12](start_span)<p>Big Data development and support for TD Bank[span_12](end_span). [span_13](start_span)Managed 7 clusters and automated delivery pipelines[span_13](end_span).</p>
+                    <h3>Tata Consultancy Services | IT Analyst</h3>
+                    <span>Apr 2016 - Sep 2021 | India</span>
+                    [span_9](start_span)<p>Development and Production support for TD Bank.[span_9](end_span) [span_10](start_span)Managed 7 clusters and automated delivery pipelines to reduce manual errors.[span_10](end_span)</p>
                 </div>
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
                 <h2><i class="fas fa-laptop-code"></i> Technical Arsenal</h2>
-                <div class="skill-pill">Hadoop / HDFS</div>
-                <div class="skill-pill">Spark / PySpark</div>
-                <div class="skill-pill">Azure Data Factory</div>
-                <div class="skill-pill">Databricks</div>
-                <div class="skill-pill">Hive / Sqoop</div>
-                <div class="skill-pill">PostgreSQL / Citus</div>
-                <div class="skill-pill">Kubernetes / Docker</div>
+                [span_11](start_span)[span_12](start_span)<div class="skill-pill">Big Data: Hadoop, Hive, Spark, Sqoop</div>[span_11](end_span)[span_12](end_span)
+                [span_13](start_span)[span_14](start_span)[span_15](start_span)<div class="skill-pill">Cloud: Azure, Solix, ADLS, Databricks</div>[span_13](end_span)[span_14](end_span)[span_15](end_span)
+                [span_16](start_span)[span_17](start_span)[span_18](start_span)<div class="skill-pill">Data Tools: Oozie, Autosys, PowerBI, Splunk</div>[span_16](end_span)[span_17](end_span)[span_18](end_span)
+                [span_19](start_span)[span_20](start_span)<div class="skill-pill">DB: PostgreSQL, Citus, Oracle, Teradata</div>[span_19](end_span)[span_20](end_span)
+                [span_21](start_span)[span_22](start_span)<div class="skill-pill">DevOps: Jenkins, Kubernetes, Docker, CI/CD</div>[span_21](end_span)[span_22](end_span)
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
                 <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-                [span_14](start_span)<p><strong>MCA:</strong> SASTRA University, Tamilnadu[span_14](end_span)</p>
-                [span_15](start_span)<p><strong>BCA:</strong> West Bengal University of Technology[span_15](end_span)</p>
-                [span_16](start_span)<p><strong>PG Diploma (ML/AI):</strong> IIIT Bangalore[span_16](end_span)</p>
+                [span_23](start_span)<p><strong>Master of Computer Application (MCA):</strong> SASTRA University, Tamilnadu[span_23](end_span)</p>
+                [span_24](start_span)<p><strong>Bachelor of Computer Application (BCA):</strong> WBUT, Kolkata[span_24](end_span)</p>
+                [span_25](start_span)<p><strong>PG Diploma (ML/AI):</strong> IIIT Bangalore[span_25](end_span)</p>
             </section>
 
             <section class="glass-card" onclick="createRipple(event)">
                 <h2><i class="fas fa-star"></i> Recognition</h2>
-                [span_17](start_span)<p>🏆 Featured among **1 Million Women in STEM**[span_17](end_span)</p>
-                [span_18](start_span)<p>⭐ **Beyond Excellence Award** from Client[span_18](end_span)</p>
-                [span_19](start_span)<p>⭐ **6x On the Spot Awards** for client appreciation[span_19](end_span)</p>
+                [span_26](start_span)<p>🏆 Featured among **1 Million Women in STEM**.[span_26](end_span)</p>
+                [span_27](start_span)<p>⭐ **Beyond Excellence Award** from Client.[span_27](end_span)</p>
+                [span_28](start_span)<p>⭐ **6x On the Spot Awards** for consistent performance and client appreciation.[span_28](end_span)</p>
+                [span_29](start_span)<p>⭐ **Star of the Month** for leadership and project success.[span_29](end_span)</p>
             </section>
         </main>
     </div>
 
     <script>
-        // Galaxy Starfield
+        // Galaxy Starfield Animation
         const canvas = document.getElementById('galaxy-bg');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -258,7 +242,7 @@
             canvas.height = window.innerHeight;
             stars = [];
             for(let i=0; i<300; i++) {
-                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 1.5, s: Math.random() * 0.3 });
+                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 1.5, s: Math.random() * 0.4 });
             }
         }
 
@@ -275,7 +259,7 @@
             requestAnimationFrame(draw);
         }
 
-        // iPhone Water Ripple
+        // iPhone Style Liquid Ripple
         function createRipple(e) {
             const card = e.currentTarget;
             const drop = document.createElement("span");
